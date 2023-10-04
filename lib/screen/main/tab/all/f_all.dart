@@ -12,7 +12,6 @@ class _AllFragmentState extends State<AllFragment> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.themeType.themeData.scaffoldBackgroundColor,
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -22,6 +21,7 @@ class _AllFragmentState extends State<AllFragment> {
                 color: context.themeType.themeData.scaffoldBackgroundColor,
               ),
             ),
+            title: '전체'.text.make(),
           ),
         ],
       ),

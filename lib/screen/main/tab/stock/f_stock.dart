@@ -23,6 +23,13 @@ class _StockFragmentState extends State<StockFragment>
       slivers: [
         SliverAppBar(
           pinned: true,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Container(
+              color: context.themeType.themeData.scaffoldBackgroundColor,
+            ),
+          ),
+          title: '주식'.text.make(),
+          centerTitle: true,
           actions: [
             IconButton(
                 icon: const Icon(Icons.search),

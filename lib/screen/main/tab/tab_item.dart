@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 enum TabItem {
   stock(Icons.area_chart, '주식', StockFragment()),
-  home(Icons.home, '홈', HomeFragment()),
-  benefit(Icons.diamond, '혜택', BenefitFragment()),
-  ttosspay(Icons.payment, '토스페이', TtosspayFragment()),
-  all(Icons.menu, '전체', AllFragment());
+  home(Icons.newspaper, '뉴스', HomeFragment()),
+  benefit(Icons.language, '검색', BenefitFragment()),
+  ttosspay(Icons.star, '관심목록', TtosspayFragment()),
+  all(Icons.menu, '더보기', AllFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;
