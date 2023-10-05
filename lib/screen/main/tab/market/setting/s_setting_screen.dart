@@ -2,8 +2,8 @@ import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/dart/extension/datetime_extension.dart';
 import 'package:fast_app_base/common/data/preference/app_preferences.dart';
 import 'package:fast_app_base/common/widget/w_big_button.dart';
-import 'package:fast_app_base/screen/main/tab/stock/setting/d_number.dart';
-import 'package:fast_app_base/screen/main/tab/stock/setting/w_switch_menu.dart';
+import 'package:fast_app_base/screen/main/tab/market/setting/d_number.dart';
+import 'package:fast_app_base/screen/main/tab/market/setting/w_switch_menu.dart';
 import 'package:fast_app_base/screen/opensource/s_opensource.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:fast_app_base/common/constants.dart';
-import 'package:fast_app_base/screen/main/tab/stock/vo_stock.dart';
+import 'package:fast_app_base/screen/main/tab/market/vo_stock.dart';
 
 List<Stock> myInterestStocks = [
   Stock(

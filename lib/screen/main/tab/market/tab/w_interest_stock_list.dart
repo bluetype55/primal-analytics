@@ -1,5 +1,5 @@
-import 'package:fast_app_base/screen/main/tab/stock/dummy_stock.dart';
-import 'package:fast_app_base/screen/main/tab/stock/tab/w_stock_item.dart';
+import 'package:fast_app_base/screen/main/tab/market/dummy_stock.dart';
+import 'package:fast_app_base/screen/main/tab/market/tab/w_stock_item.dart';
 import 'package:flutter/material.dart';
 
 class InterestStockList extends StatelessWidget {

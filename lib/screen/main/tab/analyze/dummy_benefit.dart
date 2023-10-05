@@ -1,5 +1,5 @@
 import 'package:fast_app_base/common/constants.dart';
-import 'package:fast_app_base/screen/main/tab/benefit/vo_benefit.dart';
+import 'package:fast_app_base/screen/main/tab/analyze/vo_benefit.dart';
 
 final benefitList = <Benefit>[
   Benefit('$basePath/benefit/benefit_01.png', '포인트 받기', '친구와 함께 토스 켜고'),

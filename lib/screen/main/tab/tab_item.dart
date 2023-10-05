@@ -1,17 +1,18 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/all/f_all.dart';
-import 'package:fast_app_base/screen/main/tab/benefit/f_benefit.dart';
-import 'package:fast_app_base/screen/main/tab/home/f_home.dart';
-import 'package:fast_app_base/screen/main/tab/stock/f_stock.dart';
-import 'package:fast_app_base/screen/main/tab/ttosspay/f_ttosspay.dart';
 import 'package:flutter/material.dart';
 
+import 'analyze/f_benefit.dart';
+import 'market/f_stock.dart';
+import 'more/f_all.dart';
+import 'news/f_home.dart';
+import 'watchlist/f_ttosspay.dart';
+
 enum TabItem {
-  stock(Icons.area_chart, '주식', StockFragment()),
-  home(Icons.home, '홈', HomeFragment()),
-  benefit(Icons.diamond, '혜택', BenefitFragment()),
-  ttosspay(Icons.payment, '토스페이', TtosspayFragment()),
-  all(Icons.menu, '전체', AllFragment());
+  market(Icons.area_chart, '시장', MarketFragment()),
+  news(Icons.newspaper, '뉴스', NewsFragment()),
+  analyze(Icons.language, '검색', AnalyzeFragment()),
+  watchlist(Icons.star, '관심목록', WatchlistFragment()),
+  more(Icons.menu, '더보기', MoreFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;

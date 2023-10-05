@@ -1,11 +1,11 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:fast_app_base/screen/main/tab/tab_item.dart';
 import 'package:fast_app_base/screen/main/tab/tab_navigator.dart';
+import 'package:fast_app_base/screen/main/w_menu_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../common/common.dart';
-import 'w_menu_drawer.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,13 +16,13 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin, AfterLayoutMixin {
-  TabItem _currentTab = TabItem.home;
+  TabItem _currentTab = TabItem.market;
   final tabs = [
-    TabItem.stock,
-    TabItem.home,
-    TabItem.benefit,
-    TabItem.ttosspay,
-    TabItem.all,
+    TabItem.market,
+    TabItem.news,
+    TabItem.analyze,
+    TabItem.watchlist,
+    TabItem.more,
   ];
   final List<GlobalKey<NavigatorState>> navigatorKeys = [];
 
@@ -84,8 +84,8 @@ class MainScreenState extends State<MainScreen>
     final isFirstRouteInCurrentTab =
         (await _currentTabNavigationKey.currentState?.maybePop() == false);
     if (isFirstRouteInCurrentTab) {
-      if (_currentTab != TabItem.home) {
-        _changeTab(tabs.indexOf(TabItem.home));
+      if (_currentTab != TabItem.market) {
+        _changeTab(tabs.indexOf(TabItem.market));
         return false;
       }
     }
