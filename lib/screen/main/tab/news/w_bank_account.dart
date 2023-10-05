@@ -1,6 +1,6 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/widget/w_rounded_container.dart';
-import 'package:fast_app_base/screen/main/tab/home/vo/vo_bank_account.dart';
+import 'package:fast_app_base/screen/main/tab/news/vo/vo_bank_account.dart';
 import 'package:flutter/material.dart';
 
 class BankAccountWidget extends StatelessWidget {

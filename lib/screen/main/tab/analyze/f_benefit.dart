@@ -1,18 +1,18 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
-import 'package:fast_app_base/screen/main/tab/benefit/dummy_benefit.dart';
-import 'package:fast_app_base/screen/main/tab/benefit/w_benefit_item.dart';
-import 'package:fast_app_base/screen/main/tab/benefit/w_point_button.dart';
+import 'package:fast_app_base/screen/main/tab/analyze/dummy_benefit.dart';
+import 'package:fast_app_base/screen/main/tab/analyze/w_benefit_item.dart';
+import 'package:fast_app_base/screen/main/tab/analyze/w_point_button.dart';
 import 'package:flutter/material.dart';
 
-class BenefitFragment extends StatefulWidget {
-  const BenefitFragment({super.key});
+class AnalyzeFragment extends StatefulWidget {
+  const AnalyzeFragment({super.key});
 
   @override
-  State<BenefitFragment> createState() => _BenefitFragmentState();
+  State<AnalyzeFragment> createState() => _AnalyzeFragmentState();
 }
 
-class _BenefitFragmentState extends State<BenefitFragment> {
+class _AnalyzeFragmentState extends State<AnalyzeFragment> {
   @override
   Widget build(BuildContext context) {
     return Container(

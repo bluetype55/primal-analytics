@@ -16,13 +16,13 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin, AfterLayoutMixin {
-  TabItem _currentTab = TabItem.stock;
+  TabItem _currentTab = TabItem.market;
   final tabs = [
-    TabItem.stock,
-    TabItem.home,
-    TabItem.benefit,
-    TabItem.ttosspay,
-    TabItem.all,
+    TabItem.market,
+    TabItem.news,
+    TabItem.analyze,
+    TabItem.watchlist,
+    TabItem.more,
   ];
   final List<GlobalKey<NavigatorState>> navigatorKeys = [];
 
@@ -54,7 +54,7 @@ class MainScreenState extends State<MainScreen>
       onWillPop: _handleBackPressed,
       child: Scaffold(
         extendBody: extendBody, //bottomNavigationBar 아래 영역 까지 그림
-        drawer: MenuDrawer(),
+        drawer: const MenuDrawer(),
         body: Container(
           padding: EdgeInsets.only(
               bottom: extendBody ? 60 - bottomNavigationBarBorderRadius : 0),
@@ -84,8 +84,8 @@ class MainScreenState extends State<MainScreen>
     final isFirstRouteInCurrentTab =
         (await _currentTabNavigationKey.currentState?.maybePop() == false);
     if (isFirstRouteInCurrentTab) {
-      if (_currentTab != TabItem.stock) {
-        _changeTab(tabs.indexOf(TabItem.stock));
+      if (_currentTab != TabItem.market) {
+        _changeTab(tabs.indexOf(TabItem.market));
         return false;
       }
     }

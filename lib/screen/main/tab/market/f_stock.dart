@@ -1,18 +1,18 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/s_search_stock.dart';
-import 'package:fast_app_base/screen/main/tab/stock/setting/s_setting_screen.dart';
-import 'package:fast_app_base/screen/main/tab/stock/tab/f_my_stock.dart';
-import 'package:fast_app_base/screen/main/tab/stock/tab/f_today_discovery.dart';
+import 'package:fast_app_base/screen/main/tab/market/search/s_search_stock.dart';
+import 'package:fast_app_base/screen/main/tab/market/setting/s_setting_screen.dart';
+import 'package:fast_app_base/screen/main/tab/market/tab/f_my_stock.dart';
+import 'package:fast_app_base/screen/main/tab/market/tab/f_today_discovery.dart';
 import 'package:flutter/material.dart';
 
-class StockFragment extends StatefulWidget {
-  const StockFragment({super.key});
+class MarketFragment extends StatefulWidget {
+  const MarketFragment({super.key});
 
   @override
-  State<StockFragment> createState() => _StockFragmentState();
+  State<MarketFragment> createState() => _MarketFragmentState();
 }
 
-class _StockFragmentState extends State<StockFragment>
+class _MarketFragmentState extends State<MarketFragment>
     with SingleTickerProviderStateMixin {
   late final tabController = TabController(length: 2, vsync: this);
   int currentIndex = 0;
@@ -28,8 +28,7 @@ class _StockFragmentState extends State<StockFragment>
               color: context.themeType.themeData.scaffoldBackgroundColor,
             ),
           ),
-          title: '주식'.text.make(),
-          centerTitle: true,
+          title: '시장'.text.make(),
           actions: [
             IconButton(
                 icon: const Icon(Icons.search),
@@ -46,7 +45,6 @@ class _StockFragmentState extends State<StockFragment>
         SliverToBoxAdapter(
           child: Column(
             children: [
-              title,
               tabBar,
               if (currentIndex == 0)
                 const MyStockFragment()
@@ -58,31 +56,6 @@ class _StockFragmentState extends State<StockFragment>
       ],
     );
   }
-
-  Widget get title => Container(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            '토스증권'.text.size(24).bold.make(),
-            width20,
-            'S&P500'
-                .text
-                .size(13)
-                .bold
-                .color(context.appColors.lessImportant)
-                .make(),
-            width10,
-            3919.29
-                .toComma()
-                .toString()
-                .text
-                .size(13)
-                .bold
-                .color(context.appColors.plus)
-                .make(),
-          ],
-        ).pOnly(left: 20),
-      );
 
   Widget get tabBar => Container(
         child: Column(
