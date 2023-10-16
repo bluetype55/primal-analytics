@@ -45,4 +45,7 @@ class DarkAppColors extends AbstractThemeColors {
 
   @override
   Color get roundedLayoutBackgorund => const Color.fromARGB(255, 24, 24, 24);
+
+  @override
+  Color get appBarBackgroud => const Color.fromARGB(255, 18, 18, 18);
 }

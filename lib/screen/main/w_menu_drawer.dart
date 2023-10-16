@@ -91,14 +91,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
           ),
           const Height(10),
           const Line(),
-          _MenuWidget(
+          MenuItemWidget(
             'opensource'.tr(),
             onTap: () async {
               Nav.push(const OpensourceScreen());
             },
           ),
           const Line(),
-          _MenuWidget(
+          MenuItemWidget(
             'clear_cache'.tr(),
             onTap: () async {
               final manager = DefaultCacheManager();
@@ -112,31 +112,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
           isSmallScreen(context) ? const Height(10) : const EmptyExpanded(),
           MouseRegion(
             cursor: SystemMouseCursors.click,
-            child: ModeSwitch(
-              value: context.isDarkMode,
-              onChanged: (value) {
-                ThemeUtil.toggleTheme(context);
-                if (value) {
-                  SystemChrome.setSystemUIOverlayStyle(
-                      const SystemUiOverlayStyle(
-                    statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
-                    statusBarIconBrightness:
-                        Brightness.light, // 아이콘 색상 (어두운 아이콘)
-                  ));
-                } else {
-                  SystemChrome.setSystemUIOverlayStyle(
-                      const SystemUiOverlayStyle(
-                    statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
-                    statusBarIconBrightness: Brightness.dark,
-                  ));
-                }
-              },
-              height: 30,
-              activeThumbImage: Image.asset('$basePath/darkmode/moon.png'),
-              inactiveThumbImage: Image.asset('$basePath/darkmode/sun.png'),
-              activeThumbColor: Colors.transparent,
-              inactiveThumbColor: Colors.transparent,
-            ).pOnly(left: 20),
+            child: const ModSwitch().pOnly(left: 20),
           ),
           const Height(10),
           getLanguageOption(context),
@@ -250,11 +226,43 @@ class _MenuDrawerState extends State<MenuDrawer> {
   }
 }
 
-class _MenuWidget extends StatelessWidget {
+class ModSwitch extends StatelessWidget {
+  const ModSwitch({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ModeSwitch(
+      value: context.isDarkMode,
+      onChanged: (value) {
+        ThemeUtil.toggleTheme(context);
+        if (value) {
+          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
+            statusBarIconBrightness: Brightness.light, // 아이콘 색상 (어두운 아이콘)
+          ));
+        } else {
+          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
+            statusBarIconBrightness: Brightness.dark,
+          ));
+        }
+      },
+      height: 30,
+      activeThumbImage: Image.asset('$basePath/darkmode/moon.png'),
+      inactiveThumbImage: Image.asset('$basePath/darkmode/sun.png'),
+      activeThumbColor: Colors.transparent,
+      inactiveThumbColor: Colors.transparent,
+    );
+  }
+}
+
+class MenuItemWidget extends StatelessWidget {
   final String text;
   final Function() onTap;
 
-  const _MenuWidget(this.text, {Key? key, required this.onTap})
+  const MenuItemWidget(this.text, {Key? key, required this.onTap})
       : super(key: key);
 
   @override
@@ -271,7 +279,7 @@ class _MenuWidget extends StatelessWidget {
                   child: text.text
                       .textStyle(defaultFontStyle())
                       .color(context.appColors.drawerText)
-                      .size(15)
+                      .size(20)
                       .make()),
             ],
           ),

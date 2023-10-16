@@ -10,7 +10,7 @@ import 'watchlist/f_ttosspay.dart';
 enum TabItem {
   market(Icons.area_chart, '시장', MarketFragment()),
   news(Icons.newspaper, '뉴스', NewsFragment()),
-  analyze(Icons.language, '검색', AnalyzeFragment()),
+  analyze(Icons.analytics_outlined, '분석', AnalyzeFragment()),
   watchlist(Icons.star, '관심목록', WatchlistFragment()),
   more(Icons.menu, '더보기', MoreFragment());
 

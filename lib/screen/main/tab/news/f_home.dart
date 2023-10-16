@@ -1,6 +1,7 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/widget/w_big_button.dart';
 import 'package:fast_app_base/common/widget/w_rounded_container.dart';
+import 'package:fast_app_base/data/stock_api/firestore_service.dart';
 import 'package:fast_app_base/screen/dialog/d_message.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
 import 'package:fast_app_base/screen/main/tab/news/dummy_bank_accounts.dart';
@@ -8,24 +9,32 @@ import 'package:fast_app_base/screen/main/tab/news/w_bank_account.dart';
 import 'package:fast_app_base/screen/main/tab/news/w_ttoss_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/stock_api/web_crawlring.dart';
 import '../../../dialog/d_color_bottom.dart';
 import '../../../dialog/d_confirm.dart';
 
 class NewsFragment extends StatelessWidget {
-  const NewsFragment({
-    Key? key,
-  }) : super(key: key);
+  const NewsFragment({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WebCrawler crawler = WebCrawler();
+    FirestoreService fstoreService = FirestoreService();
+
     return Container(
-      color: context.themeType.themeData.scaffoldBackgroundColor,
       child: Stack(
         children: [
           RefreshIndicator(
             edgeOffset: TtossAppBar.appBarHeight,
             onRefresh: () async {
               await sleepAsync(500.ms);
+              // List<List<dynamic>> rows = await crawler.fetchDataAndSaveToFile();
+              // await crawler.saveToFirestore(rows);
+              String? stockName =
+                  await fstoreService.fetchItemNameByCode("067080");
+              String? stockCode = await fstoreService.fetchCodeByItemName("한싹");
+              print('주식이름 : $stockName');
+              print('주식코드 : $stockCode');
             },
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),

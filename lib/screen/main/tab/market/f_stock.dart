@@ -1,6 +1,5 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/main/tab/market/search/s_search_stock.dart';
-import 'package:fast_app_base/screen/main/tab/market/setting/s_setting_screen.dart';
 import 'package:fast_app_base/screen/main/tab/market/tab/f_my_stock.dart';
 import 'package:fast_app_base/screen/main/tab/market/tab/f_today_discovery.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +33,6 @@ class _MarketFragmentState extends State<MarketFragment>
                 icon: const Icon(Icons.search),
                 onPressed: () {
                   Nav.push(const SearchStockScreen());
-                }),
-            IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: () {
-                  Nav.push(const SettingScreen());
                 }),
           ],
         ),

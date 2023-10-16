@@ -12,6 +12,7 @@ class ConfirmDialog extends DialogWidget<SimpleResult> {
   final bool cancelable;
   final TextAlign textAlign;
   final double fontSize;
+  final Function? function;
 
   ConfirmDialog(
     this.message, {
@@ -22,6 +23,7 @@ class ConfirmDialog extends DialogWidget<SimpleResult> {
     this.fontSize = 14,
     this.cancelable = true,
     this.textAlign = TextAlign.start,
+    this.function,
   })  : buttonText = buttonText ?? 'close'.tr(),
         cancelButtonText = cancelButtonText ?? 'cancel'.tr();
 
@@ -40,7 +42,8 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
         body: Container(
             constraints: BoxConstraints(maxHeight: context.deviceHeight),
             decoration: BoxDecoration(
-                color: context.appColors.drawerBg, borderRadius: BorderRadius.circular(15)),
+                color: context.appColors.drawerBg,
+                borderRadius: BorderRadius.circular(15)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -90,6 +93,9 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
                     Expanded(
                       child: Tap(
                         onTap: () {
+                          if (widget.function != null) {
+                            widget.function!();
+                          }
                           widget.hide(SimpleResult.success());
                         },
                         child: Container(

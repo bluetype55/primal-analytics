@@ -1,5 +1,15 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/data/preference/app_preferences.dart';
+import 'package:fast_app_base/screen/dialog/d_confirm.dart';
+import 'package:fast_app_base/screen/login/auth_controller.dart';
+import 'package:fast_app_base/screen/main/tab/more/w_more_app_bar.dart';
+import 'package:fast_app_base/screen/main/tab/more/w_more_menu_item_list.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
+
+import '../../../../common/common.dart';
+import '../../s_main.dart';
+import '../../w_menu_drawer.dart';
 
 class MoreFragment extends StatefulWidget {
   const MoreFragment({super.key});
@@ -9,50 +19,49 @@ class MoreFragment extends StatefulWidget {
 }
 
 class _MoreFragmentState extends State<MoreFragment> {
+  final AuthController authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                color: context.themeType.themeData.scaffoldBackgroundColor,
-              ),
+    return Stack(
+      children: [
+        RefreshIndicator(
+          edgeOffset: MoreAppBar.appBarHeight,
+          onRefresh: () async {
+            await sleepAsync(500.ms);
+          },
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(
+              top: MoreAppBar.appBarHeight,
+              bottom: MainScreenState.bottomNavigatorHeight,
             ),
-            title: '전체'.text.make(),
+            child: Column(
+              children: [
+                const MoreMenuItemList(),
+                Obx(() {
+                  if (authController.firebaseUser.value != null) {
+                    return Column(
+                      children: [
+                        MenuItemWidget("logout".tr(), onTap: () {
+                          ConfirmDialog(
+                            "SignOutMessage".tr(),
+                            buttonText: "logout".tr(),
+                            function: authController.signOut,
+                          ).show();
+                        }),
+                        const Line(),
+                      ],
+                    );
+                  } else {
+                    return Container();
+                  }
+                })
+              ],
+            ),
           ),
-          SliverToBoxAdapter(
-            child: title,
-          ),
-        ],
-      ),
+        ),
+        const MoreAppBar(),
+      ],
     );
   }
-
-  Widget get title => Container(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            '토스증권'.text.size(24).bold.make(),
-            width20,
-            'S&P500'
-                .text
-                .size(13)
-                .bold
-                .color(context.appColors.lessImportant)
-                .make(),
-            width10,
-            3919.29
-                .toComma()
-                .toString()
-                .text
-                .size(13)
-                .bold
-                .color(context.appColors.plus)
-                .make(),
-          ],
-        ).pOnly(left: 20),
-      );
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "382112883953",
+    "project_id": "primal-analytics-81805",
+    "storage_bucket": "primal-analytics-81805.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382112883953:android:1575af6d3e6dfe2211b550",
+        "android_client_info": {
+          "package_name": "com.ttoss"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApiX8bucZcoctyylE2OoCT7k8_-sqLf2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
