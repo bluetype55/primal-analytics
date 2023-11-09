@@ -1,6 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/analyze/vo_benefit.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/analyze/vo_benefit.dart';
 
 class BenefitItem extends StatelessWidget {
   final Benefit benefit;

@@ -1,5 +1,5 @@
-import 'package:fast_app_base/screen/main/tab/news/dummy_banks.dart';
-import 'package:fast_app_base/screen/main/tab/news/vo/vo_bank_account.dart';
+import 'package:primal_analytics/screen/main/tab/news/dummy_banks.dart';
+import 'package:primal_analytics/screen/main/tab/news/vo/vo_bank_account.dart';
 
 final bankAccountShinhan1 =
     BankAccount(bankShinhan, 1000000, accountTypeName: "신한 주거래 우대통장(저축예금)");

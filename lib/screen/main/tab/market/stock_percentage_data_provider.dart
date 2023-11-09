@@ -1,6 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:primal_analytics/common/common.dart';
 
 abstract mixin class StockPercentageDataProvider {
   int get currentPrice;

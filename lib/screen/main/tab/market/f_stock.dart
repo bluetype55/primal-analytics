@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/market/search/s_search_stock.dart';
-import 'package:fast_app_base/screen/main/tab/market/tab/f_my_stock.dart';
-import 'package:fast_app_base/screen/main/tab/market/tab/f_today_discovery.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/s_search_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/f_my_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/f_today_discovery.dart';
 
 class MarketFragment extends StatefulWidget {
   const MarketFragment({super.key});
@@ -27,7 +27,14 @@ class _MarketFragmentState extends State<MarketFragment>
               color: context.themeType.themeData.scaffoldBackgroundColor,
             ),
           ),
-          title: '시장'.text.make(),
+          leading: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              width10,
+              tabBar,
+            ],
+          ),
+          leadingWidth: double.maxFinite,
           actions: [
             IconButton(
                 icon: const Icon(Icons.search),
@@ -39,9 +46,8 @@ class _MarketFragmentState extends State<MarketFragment>
         SliverToBoxAdapter(
           child: Column(
             children: [
-              tabBar,
               if (currentIndex == 0)
-                const MyStockFragment()
+                MyStockFragment()
               else
                 const TodayDiscoveryFragment()
             ],
@@ -60,20 +66,24 @@ class _MarketFragmentState extends State<MarketFragment>
                   currentIndex = index;
                 });
               },
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              dividerColor: Colors.transparent,
               labelColor: context.appColors.text,
               labelStyle:
-                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              labelPadding: const EdgeInsets.symmetric(vertical: 20),
-              indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorColor: Colors.white,
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              unselectedLabelStyle:
+                  const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              labelPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              indicatorColor: context.appColors.text,
+              indicatorSize: TabBarIndicatorSize.label,
               controller: tabController,
               tabs: [
                 "내주식".text.make(),
                 '오늘의 발견'.text.make(),
               ],
             ),
-            const Line(),
           ],
         ),
       );

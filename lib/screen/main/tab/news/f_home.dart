@@ -1,12 +1,12 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/widget/w_big_button.dart';
-import 'package:fast_app_base/common/widget/w_rounded_container.dart';
-import 'package:fast_app_base/data/stock_api/firestore_service.dart';
-import 'package:fast_app_base/screen/dialog/d_message.dart';
-import 'package:fast_app_base/screen/main/s_main.dart';
-import 'package:fast_app_base/screen/main/tab/news/dummy_bank_accounts.dart';
-import 'package:fast_app_base/screen/main/tab/news/w_bank_account.dart';
-import 'package:fast_app_base/screen/main/tab/news/w_ttoss_app_bar.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/widget/w_big_button.dart';
+import 'package:primal_analytics/common/widget/w_rounded_container.dart';
+import 'package:primal_analytics/data/stock_api/firestore_service.dart';
+import 'package:primal_analytics/screen/dialog/d_message.dart';
+import 'package:primal_analytics/screen/main/s_main.dart';
+import 'package:primal_analytics/screen/main/tab/news/dummy_bank_accounts.dart';
+import 'package:primal_analytics/screen/main/tab/news/w_bank_account.dart';
+import 'package:primal_analytics/screen/main/tab/news/w_ttoss_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/stock_api/web_crawlring.dart';

@@ -1,9 +1,9 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/s_main.dart';
-import 'package:fast_app_base/screen/main/tab/analyze/dummy_benefit.dart';
-import 'package:fast_app_base/screen/main/tab/analyze/w_benefit_item.dart';
-import 'package:fast_app_base/screen/main/tab/analyze/w_point_button.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/s_main.dart';
+import 'package:primal_analytics/screen/main/tab/analyze/dummy_benefit.dart';
+import 'package:primal_analytics/screen/main/tab/analyze/w_benefit_item.dart';
+import 'package:primal_analytics/screen/main/tab/analyze/w_point_button.dart';
 
 class AnalyzeFragment extends StatefulWidget {
   const AnalyzeFragment({super.key});

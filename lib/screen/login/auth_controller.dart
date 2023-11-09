@@ -36,6 +36,7 @@ class AuthController extends GetxController {
       print(error);
       return null;
     }
+    return null;
   }
 
   Future<void> signOut() async {

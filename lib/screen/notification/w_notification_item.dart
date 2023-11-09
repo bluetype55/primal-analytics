@@ -1,6 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/notification/vo/vo_notification.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/notification/vo/vo_notification.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NotifcationItemWidget extends StatefulWidget {

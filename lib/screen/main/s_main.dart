@@ -1,11 +1,15 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:fast_app_base/screen/main/tab/tab_item.dart';
-import 'package:fast_app_base/screen/main/tab/tab_navigator.dart';
-import 'package:fast_app_base/screen/main/w_menu_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
+import 'package:primal_analytics/screen/main/tab/tab_item.dart';
+import 'package:primal_analytics/screen/main/tab/tab_navigator.dart';
+import 'package:primal_analytics/screen/main/w_menu_drawer.dart';
 
 import '../../common/common.dart';
+import '../../data/stock_api/stock_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -39,7 +43,13 @@ class MainScreenState extends State<MainScreen>
 
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) async {
-    FlutterNativeSplash.remove();
+    StockService stockService = Get.find<StockService>();
+    ever(stockService.isLoading, (isLoading) {
+      if (!isLoading) {
+        // 로딩이 끝났으면 스플래시 화면 제거
+        FlutterNativeSplash.remove();
+      }
+    });
   }
 
   @override

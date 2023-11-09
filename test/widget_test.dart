@@ -7,14 +7,14 @@
 
 import 'dart:io';
 
-import 'package:fast_app_base/app.dart';
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/data/preference/app_preferences.dart';
-import 'package:fast_app_base/common/language/language.dart';
-import 'package:fast_app_base/common/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
+import 'package:primal_analytics/app.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/data/preference/app_preferences.dart';
+import 'package:primal_analytics/common/language/language.dart';
+import 'package:primal_analytics/common/theme/custom_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -32,7 +32,8 @@ void main() {
     await tester.pumpAndSettle();
 
     // 1. Localizations test
-    expect(currentLanguage, Language.korean); //startLocale: const Locale('ko') 이 설정되어 있으므로 한국어로 시작
+    expect(currentLanguage,
+        Language.korean); //startLocale: const Locale('ko') 이 설정되어 있으므로 한국어로 시작
 
     // 2. Custom Theme test
     expect(App.navigatorKey.currentContext!.themeType, CustomTheme.light);

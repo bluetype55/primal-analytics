@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/widget/w_round_button.dart';
-import 'package:fast_app_base/common/widget/w_rounded_container.dart';
 import 'package:flutter/material.dart';
 import 'package:nav/dialog/dialog.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/widget/w_round_button.dart';
+import 'package:primal_analytics/common/widget/w_rounded_container.dart';
 
 class NumberDialog extends DialogWidget<int?> {
   NumberDialog({super.key, super.animation = NavAni.Fade});

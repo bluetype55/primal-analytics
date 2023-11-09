@@ -1,5 +1,5 @@
-import 'package:fast_app_base/common/theme/color/abs_theme_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/theme/color/abs_theme_colors.dart';
 
 class DarkAppColors extends AbstractThemeColors {
   const DarkAppColors();
@@ -48,4 +48,15 @@ class DarkAppColors extends AbstractThemeColors {
 
   @override
   Color get appBarBackgroud => const Color.fromARGB(255, 18, 18, 18);
+
+  @override
+  Color get lessImportant => const Color.fromARGB(255, 162, 162, 162);
+
+  @override
+  // TODO: implement plus
+  Color get plus => const Color.fromARGB(255, 230, 71, 83);
+
+  @override
+  // TODO: implement minus
+  Color get minus => const Color.fromARGB(255, 38, 97, 210);
 }

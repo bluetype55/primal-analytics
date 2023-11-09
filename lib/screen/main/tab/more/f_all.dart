@@ -1,11 +1,11 @@
-import 'package:fast_app_base/common/data/preference/app_preferences.dart';
-import 'package:fast_app_base/screen/dialog/d_confirm.dart';
-import 'package:fast_app_base/screen/login/auth_controller.dart';
-import 'package:fast_app_base/screen/main/tab/more/w_more_app_bar.dart';
-import 'package:fast_app_base/screen/main/tab/more/w_more_menu_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:primal_analytics/common/data/preference/app_preferences.dart';
+import 'package:primal_analytics/screen/dialog/d_confirm.dart';
+import 'package:primal_analytics/screen/login/auth_controller.dart';
+import 'package:primal_analytics/screen/main/tab/more/w_more_app_bar.dart';
+import 'package:primal_analytics/screen/main/tab/more/w_more_menu_item_list.dart';
 
 import '../../../../common/common.dart';
 import '../../s_main.dart';

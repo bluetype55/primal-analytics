@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/util/app_keyboard_util.dart';
-import 'package:fast_app_base/common/widget/w_arrow.dart';
-import 'package:fast_app_base/common/widget/w_text_field_with_delete.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/util/app_keyboard_util.dart';
+import 'package:primal_analytics/common/widget/w_arrow.dart';
+import 'package:primal_analytics/common/widget/w_text_field_with_delete.dart';
 
 class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController controller;

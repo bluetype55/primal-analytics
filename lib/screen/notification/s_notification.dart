@@ -1,6 +1,6 @@
-import 'package:fast_app_base/screen/notification/d_notification.dart';
-import 'package:fast_app_base/screen/notification/dummy_notification.dart';
-import 'package:fast_app_base/screen/notification/w_notification_item.dart';
+import 'package:primal_analytics/screen/notification/d_notification.dart';
+import 'package:primal_analytics/screen/notification/dummy_notification.dart';
+import 'package:primal_analytics/screen/notification/w_notification_item.dart';
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatefulWidget {

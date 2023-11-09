@@ -1,10 +1,10 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/dialog/d_message.dart';
-import 'package:fast_app_base/screen/login/auth_controller.dart';
-import 'package:fast_app_base/screen/main/s_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/dialog/d_message.dart';
+import 'package:primal_analytics/screen/login/auth_controller.dart';
+import 'package:primal_analytics/screen/main/s_main.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

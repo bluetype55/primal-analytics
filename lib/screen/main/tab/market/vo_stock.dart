@@ -1,4 +1,4 @@
-import 'package:fast_app_base/screen/main/tab/market/vo_popular_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_popular_stock.dart';
 
 class Stock extends PopularStock {
   final String stockImagePath;

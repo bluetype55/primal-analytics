@@ -1,9 +1,9 @@
 import 'package:animations/animations.dart';
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/dart/extension/datetime_extension.dart';
-import 'package:fast_app_base/screen/main/tab/market/search/s_stock_detail.dart';
-import 'package:fast_app_base/screen/main/tab/market/search/w_popular_search_stock_item.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/dart/extension/datetime_extension.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/s_stock_detail.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_item.dart';
 
 import 'dummy_popular_stock.dart';
 

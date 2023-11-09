@@ -1,5 +1,5 @@
-import 'package:fast_app_base/screen/main/tab/market/stock_percentage_data_provider.dart';
-import 'package:fast_app_base/screen/main/tab/market/vo_simple_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/stock_percentage_data_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_simple_stock.dart';
 
 class PopularStock extends SimpleStock with StockPercentageDataProvider {
   @override

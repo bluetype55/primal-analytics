@@ -1,6 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/notification/vo/notification_type.dart';
-import 'package:fast_app_base/screen/notification/vo/vo_notification.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/notification/vo/notification_type.dart';
+import 'package:primal_analytics/screen/notification/vo/vo_notification.dart';
 
 final notificationDummies = <TtossNotification>[
   TtossNotification(

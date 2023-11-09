@@ -1,5 +1,5 @@
-import 'package:fast_app_base/common/widget/w_tap.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/widget/w_tap.dart';
 
 class ImageButton extends StatelessWidget {
   final String imagePath;

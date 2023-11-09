@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:primal_analytics/common/common.dart';
 
 enum NotificationType {
   tossPay('토스페이', '$basePath/notification/notification_toss.png'),

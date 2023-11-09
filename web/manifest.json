@@ -1,6 +1,6 @@
 {
-    "name": "fast_app_base",
-    "short_name": "fast_app_base",
+    "name": "primal_analytics",
+    "short_name": "primal_analytics",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

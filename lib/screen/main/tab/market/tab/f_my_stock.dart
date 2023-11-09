@@ -1,8 +1,9 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/widget/w_arrow.dart';
-import 'package:fast_app_base/common/widget/w_rounded_container.dart';
-import 'package:fast_app_base/screen/main/tab/market/tab/w_interest_stock_list.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/widget/w_arrow.dart';
+import 'package:primal_analytics/common/widget/w_rounded_container.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_interest_stock_list.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_sorting_box.dart';
 
 import '../../../../../common/widget/w_long_button.dart';
 
@@ -13,7 +14,7 @@ class MyStockFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        getmyAccount(context),
+        StockSortingBox('국내'),
         height20,
         getMyStock(context),
         botNavBarHeight,

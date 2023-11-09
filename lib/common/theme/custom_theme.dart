@@ -1,9 +1,9 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/theme/color/dark_app_colors.dart';
-import 'package:fast_app_base/common/theme/color/light_app_colors.dart';
-import 'package:fast_app_base/common/theme/shadows/dart_app_shadows.dart';
-import 'package:fast_app_base/common/theme/shadows/light_app_shadows.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/common/theme/color/dark_app_colors.dart';
+import 'package:primal_analytics/common/theme/color/light_app_colors.dart';
+import 'package:primal_analytics/common/theme/shadows/dart_app_shadows.dart';
+import 'package:primal_analytics/common/theme/shadows/light_app_shadows.dart';
 
 enum CustomTheme {
   dark(

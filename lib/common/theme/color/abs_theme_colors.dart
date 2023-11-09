@@ -1,7 +1,7 @@
-import 'package:fast_app_base/common/constant/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/constant/app_colors.dart';
 
-export 'package:fast_app_base/common/constant/app_colors.dart';
+export 'package:primal_analytics/common/constant/app_colors.dart';
 
 typedef ColorProvider = Color Function();
 
@@ -54,7 +54,7 @@ abstract class AbstractThemeColors {
 
   Color get unReadColor => const Color.fromARGB(255, 48, 48, 48);
 
-  Color get lessImportant => Colors.grey;
+  Color get lessImportant => const Color.fromARGB(255, 77, 77, 77);
 
   Color get blueText => AppColors.blue;
 

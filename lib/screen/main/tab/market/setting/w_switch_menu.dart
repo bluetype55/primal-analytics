@@ -1,7 +1,7 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/market/setting/w_os_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/setting/w_os_switch.dart';
 
 class SwitchMenu extends StatelessWidget {
   final String title;

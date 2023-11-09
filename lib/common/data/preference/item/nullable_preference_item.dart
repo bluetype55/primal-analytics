@@ -1,5 +1,6 @@
-import 'package:fast_app_base/common/data/preference/item/preference_item.dart';
+import 'package:primal_analytics/common/data/preference/item/preference_item.dart';
 
 class NullablePreferenceItem<T> extends PreferenceItem<T?> {
-  NullablePreferenceItem(String key, [T? defaultValue]) : super(key, defaultValue);
+  NullablePreferenceItem(String key, [T? defaultValue])
+      : super(key, defaultValue);
 }

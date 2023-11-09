@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:fast_app_base/screen/main/tab/market/vo_simple_stock.dart';
 import 'package:flutter/services.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_simple_stock.dart';
 
 import '../../screen/opensource/vo_package.dart';
 

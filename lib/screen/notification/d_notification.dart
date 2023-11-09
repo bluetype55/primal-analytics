@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/notification/vo/vo_notification.dart';
-import 'package:fast_app_base/screen/notification/w_notification_item.dart';
 import 'package:flutter/material.dart';
 import 'package:nav/dialog/dialog.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/notification/vo/vo_notification.dart';
+import 'package:primal_analytics/screen/notification/w_notification_item.dart';
 
 class NotificationDialog extends DialogWidget {
   final List<TtossNotification> notifications;

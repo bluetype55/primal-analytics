@@ -1,6 +1,6 @@
-import 'package:fast_app_base/data/simple_result.dart';
 import 'package:flutter/material.dart';
 import 'package:nav/bottom_sheet/modal_bottom_sheet.dart';
+import 'package:primal_analytics/data/simple_result.dart';
 
 import '../../common/common.dart';
 

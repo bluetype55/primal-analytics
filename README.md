@@ -1,4 +1,4 @@
-# fast_app_base
+# primal_analytics
 
 A new Flutter project.
 
