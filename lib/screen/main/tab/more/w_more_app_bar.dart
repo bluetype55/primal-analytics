@@ -5,7 +5,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/data/preference/app_preferences.dart';
 import 'package:primal_analytics/screen/login/s_login.dart';
-import 'package:primal_analytics/screen/main/w_menu_drawer.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/w_color_switch.dart';
 
 import '../../../login/auth_controller.dart';
 
@@ -49,7 +49,7 @@ class _MoreAppBarState extends State<MoreAppBar> {
             }
           }),
           emptyExpanded,
-          const ModSwitch(),
+          const ColorSwitch(),
           width20,
         ],
       ),

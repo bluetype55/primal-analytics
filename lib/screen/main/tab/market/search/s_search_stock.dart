@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data(dispose).dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_list.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_word_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_search_auto_coplete_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_search_history_stock_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_stock_search_app_bar.dart';
@@ -27,23 +28,20 @@ class _SearchStockScreenState extends State<SearchStockScreen>
   }
 
   @override
-  void dispose() {
-    Get.delete<SearchStockData>();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: StockSearchAppBar(
         controller: controller,
       ),
       body: Obx(
-        () => searchData.autoCompleteList.isEmpty
+        () => searchData.autoCompleteStocksList.isEmpty
             ? ListView(
-                children: const [
-                  SearchHistoryStockList(),
-                  PopularSearchStockList(),
+                children: [
+                  searchData.searchHistoryList.isEmpty
+                      ? Container()
+                      : const SearchHistoryStockList(),
+                  const PopularSearchWordList(),
+                  const PopularSearchStockList(),
                 ],
               )
             : SearchAutoCompleteList(controller),

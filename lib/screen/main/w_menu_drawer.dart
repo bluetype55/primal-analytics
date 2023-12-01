@@ -1,17 +1,13 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:primal_analytics/screen/opensource/s_opensource.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:get/get_utils/src/extensions/string_extensions.dart';
-import 'package:simple_shadow/simple_shadow.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/w_color_switch.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/w_language_option.dart';
+import 'package:primal_analytics/screen/opensource/s_opensource.dart';
 
 import '../../../screen/dialog/d_message.dart';
 import '../../common/common.dart';
-import '../../common/language/language.dart';
 import '../../common/theme/theme_util.dart';
-import '../../common/widget/w_mode_switch.dart';
 
 class MenuDrawer extends StatefulWidget {
   static const minHeightForScrollView = 380;
@@ -112,10 +108,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
           isSmallScreen(context) ? const Height(10) : const EmptyExpanded(),
           MouseRegion(
             cursor: SystemMouseCursors.click,
-            child: const ModSwitch().pOnly(left: 20),
+            child: const ColorSwitch().pOnly(left: 20),
           ),
           const Height(10),
-          getLanguageOption(context),
+          const LanguageOption(),
           const Height(10),
           Row(
             children: [
@@ -147,114 +143,6 @@ class _MenuDrawerState extends State<MenuDrawer> {
     if (Scaffold.of(context).isDrawerOpen) {
       Scaffold.of(context).closeDrawer();
     }
-  }
-
-  Widget getLanguageOption(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Tap(
-            child: Container(
-                padding: const EdgeInsets.only(left: 5, right: 5),
-                margin: const EdgeInsets.only(left: 15, right: 20),
-                decoration: BoxDecoration(
-                    border: Border.all(color: context.appColors.veryBrightGrey),
-                    borderRadius: BorderRadius.circular(10),
-                    color: context.appColors.drawerBg,
-                    boxShadow: [context.appShadows.buttonShadowSmall]),
-                child: Row(
-                  children: [
-                    const Width(10),
-                    DropdownButton<String>(
-                      items: [
-                        menu(currentLanguage),
-                        menu(Language.values
-                            .where((element) => element != currentLanguage)
-                            .first),
-                      ],
-                      onChanged: (value) async {
-                        if (value == null) {
-                          return;
-                        }
-                        await context.setLocale(
-                            Language.find(value.toLowerCase()).locale);
-                      },
-                      value: describeEnum(currentLanguage).capitalizeFirst,
-                      underline: const SizedBox.shrink(),
-                      elevation: 1,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ],
-                )),
-            onTap: () async {},
-          ),
-        ],
-      );
-
-  DropdownMenuItem<String> menu(Language language) {
-    return DropdownMenuItem(
-      value: describeEnum(language).capitalizeFirst,
-      child: Row(
-        children: [
-          flag(language.flagPath),
-          const Width(8),
-          describeEnum(language)
-              .capitalizeFirst!
-              .text
-              .color(Theme.of(context).textTheme.bodyLarge?.color)
-              .size(12)
-              .makeWithDefaultFont(),
-        ],
-      ),
-    );
-  }
-
-  Widget flag(String path) {
-    return SimpleShadow(
-      opacity: 0.5,
-      // Default: 0.5
-      color: Colors.grey,
-      // Default: Black
-      offset: const Offset(2, 2),
-      // Default: Offset(2, 2)
-      sigma: 2,
-      // Default: 2
-      child: Image.asset(
-        path,
-        width: 20,
-      ),
-    );
-  }
-}
-
-class ModSwitch extends StatelessWidget {
-  const ModSwitch({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ModeSwitch(
-      value: context.isDarkMode,
-      onChanged: (value) {
-        ThemeUtil.toggleTheme(context);
-        if (value) {
-          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
-            statusBarIconBrightness: Brightness.light, // 아이콘 색상 (어두운 아이콘)
-          ));
-        } else {
-          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent, // 스테이터스 바 색상 (투명으로 설정)
-            statusBarIconBrightness: Brightness.dark,
-          ));
-        }
-      },
-      height: 30,
-      activeThumbImage: Image.asset('$basePath/darkmode/moon.png'),
-      inactiveThumbImage: Image.asset('$basePath/darkmode/sun.png'),
-      activeThumbColor: Colors.transparent,
-      inactiveThumbColor: Colors.transparent,
-    );
   }
 }
 

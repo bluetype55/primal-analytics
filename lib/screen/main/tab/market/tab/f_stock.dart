@@ -7,8 +7,8 @@ import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_sorting_box.
 
 import '../../../../../common/widget/w_long_button.dart';
 
-class MyStockFragment extends StatelessWidget {
-  const MyStockFragment({super.key});
+class StockFragment extends StatelessWidget {
+  const StockFragment({super.key});
 
   @override
   Widget build(BuildContext context) {

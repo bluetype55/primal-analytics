@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_item.dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_easy_stock_opener.dart';
 
-import '../../../../../data/stock_api/stock_data.dart';
+import '../../../../../data/stock_api/vo_stock_data.dart';
 import 'dropdown_controller.dart';
 import 'dropdown_menu_list.dart';
 
@@ -32,6 +33,8 @@ class StockItemList extends StatelessWidget {
           return compareFunc<int>(a.marcap, b.marcap, ascending);
         case 'high':
           return compareFunc<int>(a.high, b.high, ascending);
+        case 'amount':
+          return compareFunc<int>(a.amount, b.amount, ascending);
         default:
           return compareFunc<int>(a.amount, b.amount, ascending); // 기본값이나 오류 처리
       }
@@ -44,25 +47,35 @@ class StockItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     sortStock(sortby, ascending);
 
+    double fragmentHeight = MediaQuery.of(context).size.height -
+        kBottomNavigationBarHeight -
+        kToolbarHeight;
+
     return limit == null
         ? Obx(() => dropdownController.koreanMarketselectedValue.value ==
                 koreanMarketDropdownMenuList[0]
             ? SizedBox(
-                height: MediaQuery.of(context).size.height -
-                    kBottomNavigationBarHeight * 1.5,
+                height: fragmentHeight,
                 child: ListView.builder(
                     itemCount: stocks.length,
-                    itemBuilder: (context, index) => StockItem(stocks[index])),
+                    itemBuilder: (context, index) {
+                      return EasyStockOpener(stocks: stocks, index: index);
+                    }),
               )
             : SizedBox(
-                height: MediaQuery.of(context).size.height -
-                    kBottomNavigationBarHeight * 1.5,
+                height: fragmentHeight,
                 child: ListView.builder(
                     itemCount: stocks.length,
-                    itemBuilder: (context, index) => stocks[index].market ==
-                            dropdownController.koreanMarketselectedValue.value
-                        ? StockItem(stocks[index])
-                        : Container()),
+                    itemBuilder: (context, index) {
+                      final filteredStocks = stocks.where((stock) =>
+                          stock.market.contains(dropdownController
+                              .koreanMarketselectedValue.value));
+
+                      return index < filteredStocks.length
+                          ? EasyStockOpener(
+                              iterable: filteredStocks, index: index)
+                          : Container();
+                    }),
               ))
         : Obx(() => dropdownController.koreanMarketselectedValue.value ==
                 koreanMarketDropdownMenuList[0]
@@ -70,18 +83,19 @@ class StockItemList extends StatelessWidget {
                 children: [
                   ...stocks
                       .take(limit!)
-                      .map((element) => StockItem(element))
+                      .mapIndexed((element, index) =>
+                          EasyStockOpener(stockData: element, index: index))
                       .toList(),
                 ],
               )
             : Column(
                 children: [
                   ...stocks
-                      .where((element) =>
-                          element.market ==
-                          dropdownController.koreanMarketselectedValue.value)
+                      .where((element) => element.market.contains(
+                          dropdownController.koreanMarketselectedValue.value))
                       .take(limit!)
-                      .map((element) => StockItem(element))
+                      .mapIndexed((element, index) =>
+                          EasyStockOpener(stockData: element, index: index))
                       .toList(),
                 ],
               ));

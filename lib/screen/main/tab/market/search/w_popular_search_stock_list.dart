@@ -2,10 +2,10 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/dart/extension/datetime_extension.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/s_stock_detail.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/s_stock_detail(dispose).dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_item.dart';
 
-import 'dummy_popular_stock.dart';
+import 'dummy_popular_stock(dispose).dart';
 
 class PopularSearchStockList extends StatelessWidget {
   const PopularSearchStockList({super.key});
@@ -16,12 +16,12 @@ class PopularSearchStockList extends StatelessWidget {
       children: [
         Row(
           children: [
-            '인기 검색'.text.bold.make(),
+            '인기 검색 종목'.text.bold.make(),
             emptyExpanded,
             '오늘 ${DateTime.now().formattedTime} 기준'.text.size(12).make(),
           ],
         ),
-        height20,
+        Divider(),
         ...popularStockList
             .mapIndexed((element, index) => OpenContainer<bool>(
                   openColor:
@@ -40,6 +40,7 @@ class PopularSearchStockList extends StatelessWidget {
                     );
                   },
                 ))
+            .take(5)
             .toList(),
       ],
     ).pSymmetric(h: 20);

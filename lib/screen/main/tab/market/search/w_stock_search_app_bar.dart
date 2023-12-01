@@ -27,6 +27,7 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
             Expanded(
                 child: TextFieldWithDelete(
               controller: controller,
+              autofocus: true,
               texthint: "'커피'를 검색해보세요.",
               textInputAction: TextInputAction.search,
               onEditingComplete: () {

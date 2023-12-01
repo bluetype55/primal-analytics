@@ -1,5 +1,5 @@
 import 'package:primal_analytics/common/constants.dart';
-import 'package:primal_analytics/screen/main/tab/market/vo_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_stock(dispose).dart';
 
 List<Stock> myInterestStocks = [
   Stock(

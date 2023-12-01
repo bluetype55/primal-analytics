@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/s_stock_detail.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data(dispose).dart';
+
+import '../tab/s_stock_details.dart';
 
 class SearchAutoCompleteList extends StatelessWidget
     with SearchStockDataProvider {
@@ -12,19 +13,17 @@ class SearchAutoCompleteList extends StatelessWidget
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final stock = searchData.autoCompleteList[index];
-        String stockName = stock.name;
+        final stockIdstInfo = searchData.autoCompleteStocksList[index];
         return Tap(
-            onTap: () {
-              Nav.push(StockDetailScreen(
-                stockName: stockName,
-              ));
-              controller.clear();
-              searchData.addHistory(stock);
-            },
-            child: stockName.text.make().p(20));
+          onTap: () {
+            Nav.push(StockDetailsScreen(stockIdstInfo.code));
+            controller.clear();
+            searchData.addHistory(stockIdstInfo.name);
+          },
+          child: stockIdstInfo.name.text.make(),
+        );
       },
-      itemCount: searchData.autoCompleteList.length,
+      itemCount: searchData.autoCompleteStocksList.length,
     );
   }
 }

@@ -1,8 +1,8 @@
-import 'package:primal_analytics/common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:primal_analytics/common/common.dart';
 
 import 'analyze/f_benefit.dart';
-import 'market/f_stock.dart';
+import 'market/f_market.dart';
 import 'more/f_all.dart';
 import 'news/f_home.dart';
 import 'watchlist/f_ttosspay.dart';

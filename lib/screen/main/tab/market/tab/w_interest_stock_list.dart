@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:primal_analytics/screen/main/tab/market/dummy_stock.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/origin_w_stock_item.dart';
+import 'package:primal_analytics/screen/main/tab/market/dummy_stock(dispose).dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_item(dispose).dart';
 
 class InterestStockList extends StatelessWidget {
   const InterestStockList({super.key});

@@ -3,23 +3,20 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:primal_analytics/common/common.dart';
 
-import '../../../../../data/stock_api/stock_api.dart';
 import '../../../../../data/stock_api/stock_service.dart';
 
-class TodayDiscoveryFragment extends StatefulWidget {
-  const TodayDiscoveryFragment({super.key});
+class CurrenciesFragment extends StatefulWidget {
+  const CurrenciesFragment({super.key});
 
   @override
-  State<TodayDiscoveryFragment> createState() => _TodayDiscoveryFragmentState();
+  State<CurrenciesFragment> createState() => _CurrenciesFragmentState();
 }
 
-class _TodayDiscoveryFragmentState extends State<TodayDiscoveryFragment> {
-  Future fetchData() async {
-    var kospiRes = StockApi(market: "kospi");
-    return await kospiRes.fetchStockData();
-  }
-
+class _CurrenciesFragmentState extends State<CurrenciesFragment> {
   final StockService stockService = Get.find<StockService>();
+  Future fetchData() async {
+    return stockService.fetchKrxStockData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +43,7 @@ class _TodayDiscoveryFragmentState extends State<TodayDiscoveryFragment> {
                     return ListTile(
                       title: Text("${index + 1}. ${stockData[index].name}"),
                       subtitle: Text(
-                          "${stockData[index].code} : ${stockData[index].changes}"),
+                          "${stockData[index].code} : ${stockData[index].changes} : ${stockData[index].close}"),
                     );
                   },
                 ),

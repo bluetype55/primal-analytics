@@ -1,4 +1,4 @@
-List<String> koreanMarketDropdownMenuList = ['전체', 'KOSPI', 'KOSDAQ'];
+List<String> koreanMarketDropdownMenuList = ['all', 'KOSPI', 'KOSDAQ', 'KONEX'];
 List<String> getSavedkoreanMarketDropdownMenuList() {
   return koreanMarketDropdownMenuList;
 }

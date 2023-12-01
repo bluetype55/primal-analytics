@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/vo_popular_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_popular_stock(dispose).dart';
 
 class PopularStockItem extends StatelessWidget {
   final PopularStock stock;

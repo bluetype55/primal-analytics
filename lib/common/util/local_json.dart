@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:primal_analytics/screen/main/tab/market/vo_simple_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/vo_simple_stock(dispose).dart';
 
 import '../../screen/opensource/vo_package.dart';
 
@@ -35,8 +35,8 @@ T _tryConverting<T>(dynamic json) {
   switch (T) {
     case Package:
       return Package.fromJson(json) as T;
-    case SimpleStock:
-      return SimpleStock.fromJson(json) as T;
+    case SimpleStockDispose:
+      return SimpleStockDispose.fromJson(json) as T;
     default:
       throw Exception("Please check _tryConverting method");
   }

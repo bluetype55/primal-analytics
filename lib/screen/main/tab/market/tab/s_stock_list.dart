@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_korean_market_dropdown.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_item_list.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_sorting_box.dart';
 
 import 'dropdown_controller.dart';
 
@@ -21,7 +21,7 @@ class StockListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: context.themeType.themeData.scaffoldBackgroundColor,
+        backgroundColor: context.appColors.roundedLayoutBackgorund,
         title: title.text.bold.make(),
         actions: [
           KoreanMarketDropdownButton(dropdownController: dropdownController),
@@ -30,11 +30,14 @@ class StockListScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            stockItemList,
-          ],
+        color: context.appColors.roundedLayoutBackgorund,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              stockItemList,
+            ],
+          ),
         ),
       ),
     );

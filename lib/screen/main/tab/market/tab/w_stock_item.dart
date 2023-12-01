@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/data/stock_api/stock_data.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_data.dart';
 
 class StockItem extends StatelessWidget {
   final StockData stock;
-  const StockItem(this.stock, {super.key});
+  final int numb;
+  const StockItem(this.stock, this.numb, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,18 @@ class StockItem extends StatelessWidget {
           child: Row(
             children: [
               width10,
-              (stock.name).text.size(18).bold.make(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  (stock.name).text.size(18).bold.make(),
+                  '$numb. | ${stock.market}'
+                      .text
+                      .size(12)
+                      .bold
+                      .color(context.appColors.lessImportant)
+                      .make(),
+                ],
+              ),
               emptyExpanded,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,

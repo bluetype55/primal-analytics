@@ -1,4 +1,4 @@
-import '../vo_popular_stock.dart';
+import '../vo_popular_stock(dispose).dart';
 
 List<PopularStock> get popularStockList => [
       PopularStock(

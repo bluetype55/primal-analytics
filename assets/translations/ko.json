@@ -8,5 +8,7 @@
   "logout": "로그아웃",
   "SignOutMessage": "정말로 로그아웃 하시겠습니까?",
   "setting" : "설정",
-  "cancel": "취소"
+  "cancel": "취소",
+  "all": "전체",
+  "more": "더보기"
 }

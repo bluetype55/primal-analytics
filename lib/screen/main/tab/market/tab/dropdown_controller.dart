@@ -6,7 +6,9 @@ class DropdownController extends GetxController {
   var koreanMarketselectedValue =
       koreanMarketDropdownMenuList[0].obs; // 선택된 항목을 Rx 상태로 관리
 
-  void koreanMarketchangeSelectedValue(String newValue) {
-    koreanMarketselectedValue.value = newValue;
+  void koreanMarketchangeSelectedValue(String? newValue) {
+    if (newValue != null) {
+      koreanMarketselectedValue.value = newValue;
+    }
   }
 }

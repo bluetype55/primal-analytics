@@ -8,5 +8,7 @@
   "logout": "Sign Out",
   "SignOutMessage": "Are you sure you want to sign out?",
   "setting" : "Settings",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "all": "All",
+  "more": "More"
 }
