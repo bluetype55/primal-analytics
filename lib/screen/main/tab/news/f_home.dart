@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/widget/w_big_button.dart';
 import 'package:primal_analytics/common/widget/w_rounded_container.dart';
@@ -7,7 +8,6 @@ import 'package:primal_analytics/screen/main/s_main.dart';
 import 'package:primal_analytics/screen/main/tab/news/dummy_bank_accounts.dart';
 import 'package:primal_analytics/screen/main/tab/news/w_bank_account.dart';
 import 'package:primal_analytics/screen/main/tab/news/w_ttoss_app_bar.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../data/stock_api/web_crawlring.dart';
 import '../../../dialog/d_color_bottom.dart';
@@ -90,7 +90,7 @@ class NewsFragment extends StatelessWidget {
 
   Future<void> showConfirmDialog(BuildContext context) async {
     final confirmDialogResult = await ConfirmDialog(
-      '오늘 기분이 좋나요?',
+      message: '오늘 기분이 좋나요?',
       buttonText: "네",
       cancelButtonText: "아니오",
     ).show();

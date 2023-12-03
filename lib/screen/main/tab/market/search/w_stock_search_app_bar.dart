@@ -16,7 +16,13 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           children: [
             Tap(
-                onTap: () => Nav.pop(context),
+                onTap: () {
+                  if (controller.text == '') {
+                    Nav.pop(context);
+                  } else {
+                    controller.clear();
+                  }
+                },
                 child: const SizedBox(
                   width: 56,
                   height: kToolbarHeight,
@@ -28,7 +34,7 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: TextFieldWithDelete(
               controller: controller,
               autofocus: true,
-              texthint: "'커피'를 검색해보세요.",
+              texthint: "원하시는 종목을 검색해보세요.",
               textInputAction: TextInputAction.search,
               onEditingComplete: () {
                 AppKeyboardUtil.hide(context);

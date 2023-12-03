@@ -1,6 +1,6 @@
 import '../vo_popular_stock(dispose).dart';
 
-List<PopularStock> get popularStockList => [
+List<PopularStock> get popularStockListDummy => [
       PopularStock(
         stockName: '한화솔루션',
         currentPrice: 41600,

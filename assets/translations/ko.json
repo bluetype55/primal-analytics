@@ -7,8 +7,10 @@
   "login": "로그인",
   "logout": "로그아웃",
   "SignOutMessage": "정말로 로그아웃 하시겠습니까?",
+  "confirm_message" : "정말로 확인하시겠습니까?",
   "setting" : "설정",
   "cancel": "취소",
+  "confirm" : "확인",
   "all": "전체",
   "more": "더보기"
 }

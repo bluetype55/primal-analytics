@@ -28,7 +28,6 @@ class StockDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final stock = codeToStock(code);
-    print(stock);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

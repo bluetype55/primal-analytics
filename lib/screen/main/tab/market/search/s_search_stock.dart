@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data(dispose).dart';
+import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_word_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_search_auto_coplete_list.dart';
@@ -44,7 +45,7 @@ class _SearchStockScreenState extends State<SearchStockScreen>
                   const PopularSearchStockList(),
                 ],
               )
-            : SearchAutoCompleteList(controller),
+            : SearchAutoCompleteList(controller).pSymmetric(h: 10),
       ),
     );
   }

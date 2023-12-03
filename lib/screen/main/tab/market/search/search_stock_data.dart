@@ -16,7 +16,9 @@ class SearchStockData extends GetxController {
   List<StockIndustryInfo> stocksInfo = [];
   RxList<StockIndustryInfo> autoCompleteIndustryList =
       <StockIndustryInfo>[].obs;
-  RxList<String> searchHistoryList = <String>[].obs;
+  RxList<StockData> searchHistoryList = <StockData>[].obs;
+  RxList<StockData> popularStockList = <StockData>[].obs;
+  RxList<String> popularKeywordList = <String>[].obs;
 
   @override
   void onInit() {
@@ -52,25 +54,16 @@ class SearchStockData extends GetxController {
     }
   }
 
-  // void search(String keyword) {
-  //   if (keyword.isEmpty) {
-  //     autoCompleteList.clear();
-  //     return;
-  //   }
-  //   autoCompleteList.value = stocks.where((element) {
-  //     return element.name.contains(keyword);
-  //   }).toList();
-  // }
-
-  // void addHistory(SimpleStockDispose stock) {
-  //   searchHistoryList.add(stock.name);
-  // }
-  void addHistory(String keyword) {
-    searchHistoryList.add(keyword);
+  void addHistory(StockData stock) {
+    searchHistoryList.remove(stock);
+    searchHistoryList.add(stock);
+    if (searchHistoryList.length > 20) {
+      searchHistoryList.removeAt(0); // 리스트 크기가 20을 초과하면 가장 오래된 요소 제거
+    }
   }
 
-  void removeHistory(String stockName) {
-    searchHistoryList.remove(stockName);
+  void removeHistory(StockData stock) {
+    searchHistoryList.remove(stock);
   }
 
   void removeAllHistory() {

@@ -1,8 +1,11 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/s_stock_detail(dispose).dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data(dispose).dart';
+import 'package:primal_analytics/screen/dialog/d_confirm.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+
+import '../tab/s_stock_details.dart';
 
 class SearchHistoryStockList extends StatefulWidget {
   const SearchHistoryStockList({super.key});
@@ -24,7 +27,9 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
             const EmptyExpanded(),
             Tap(
               onTap: () {
-                searchData.removeAllHistory();
+                ConfirmDialog(
+                  function: searchData.removeAllHistory,
+                ).show();
               },
               child: '전체 삭제'
                   .text
@@ -46,24 +51,30 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
               itemBuilder: (context, index) {
                 final reversedIndex =
                     searchData.searchHistoryList.length - 1 - index;
-                final stockName = searchData.searchHistoryList[reversedIndex];
+                final stock = searchData.searchHistoryList[reversedIndex];
                 return Column(
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 8),
                       child: Row(
                         children: [
-                          Tap(
-                              onTap: () {
-                                Nav.push(StockDetailScreen(
-                                  stockName: stockName,
-                                ));
-                              },
-                              child: stockName.text.make()),
+                          OpenContainer(
+                            transitionType:
+                                ContainerTransitionType.fade, // 애니메이션 효과 설정
+                            closedColor: Colors.transparent, // 닫힌 상태의 배경색
+                            closedBuilder: (context, action) {
+                              return stock.name.text
+                                  .make(); // 아이템을 탭하면 상세 화면 열기
+                            },
+                            openBuilder: (context, action) {
+                              return StockDetailsScreen(
+                                  stock.code); // 상세 화면 위젯 반환
+                            },
+                          ),
                           width5,
                           Tap(
                               onTap: () {
-                                searchData.removeHistory(stockName);
+                                searchData.removeHistory(stock);
                               },
                               child: const Icon(Icons.close, size: 12)),
                         ],

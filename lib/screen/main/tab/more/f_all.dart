@@ -44,7 +44,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                       children: [
                         MenuItemWidget("logout".tr(), onTap: () {
                           ConfirmDialog(
-                            "SignOutMessage".tr(),
+                            message: "SignOutMessage".tr(),
                             buttonText: "logout".tr(),
                             function: authController.signOut,
                           ).show();

@@ -7,6 +7,7 @@ abstract mixin class StockDataColorProvider {
 
   String get changesString =>
       "${changes.abs()}원 ($symbol${changesRatio.abs()}%)";
+  String get changesRatioString => "$symbol${changesRatio.abs()}%";
 
   bool get isPlus => changes > 0;
   bool get isZero => changes == 0;

@@ -1,6 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data(dispose).dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/w_simple_stock_item.dart';
 
 import '../tab/s_stock_details.dart';
 
@@ -13,14 +14,19 @@ class SearchAutoCompleteList extends StatelessWidget
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final stockIdstInfo = searchData.autoCompleteStocksList[index];
-        return Tap(
-          onTap: () {
-            Nav.push(StockDetailsScreen(stockIdstInfo.code));
-            controller.clear();
-            searchData.addHistory(stockIdstInfo.name);
+        final stock = searchData.autoCompleteStocksList[index];
+        return OpenContainer(
+          transitionType: ContainerTransitionType.fade, // 애니메이션 효과 설정
+          closedColor: Colors.transparent, // 닫힌 상태의 배경색
+          closedBuilder: (context, action) {
+            return SimpleStockItem(stock); // 아이템을 탭하면 상세 화면 열기
           },
-          child: stockIdstInfo.name.text.make(),
+          openBuilder: (context, action) {
+            return StockDetailsScreen(stock.code); // 상세 화면 위젯 반환
+          },
+          onClosed: (data) {
+            searchData.addHistory(stock);
+          },
         );
       },
       itemCount: searchData.autoCompleteStocksList.length,

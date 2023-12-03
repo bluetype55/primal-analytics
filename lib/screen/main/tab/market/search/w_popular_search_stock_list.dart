@@ -22,7 +22,7 @@ class PopularSearchStockList extends StatelessWidget {
           ],
         ),
         Divider(),
-        ...popularStockList
+        ...popularStockListDummy
             .mapIndexed((element, index) => OpenContainer<bool>(
                   openColor:
                       context.themeType.themeData.scaffoldBackgroundColor,

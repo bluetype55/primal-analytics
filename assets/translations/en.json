@@ -7,8 +7,10 @@
   "login": "Sign In",
   "logout": "Sign Out",
   "SignOutMessage": "Are you sure you want to sign out?",
+  "confirm_message" : "Are you sure you want to confirm?",
   "setting" : "Settings",
   "cancel": "Cancel",
+  "confirm" : "Confirm",
   "all": "All",
   "more": "More"
 }
