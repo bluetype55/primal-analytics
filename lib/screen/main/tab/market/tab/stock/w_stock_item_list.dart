@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/dropdown_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/w_easy_stock_opener.dart';
 
-import '../../../../../data/stock_api/vo_stock_data.dart';
-import 'dropdown_controller.dart';
-import 'dropdown_menu_list.dart';
+import '../../../../../../data/stock_api/vo_stock_data.dart';
 
-class StockItemList extends StatelessWidget {
+class StockItemList extends StatelessWidget with DropdownProvider {
   StockItemList(this.stocks,
       {super.key, this.limit, this.sortby, this.ascending = false});
 
@@ -41,8 +40,6 @@ class StockItemList extends StatelessWidget {
     });
   }
 
-  final DropdownController dropdownController = Get.find<DropdownController>();
-
   @override
   Widget build(BuildContext context) {
     sortStock(sortby, ascending);
@@ -53,7 +50,7 @@ class StockItemList extends StatelessWidget {
 
     return limit == null
         ? Obx(() => dropdownController.koreanMarketselectedValue.value ==
-                koreanMarketDropdownMenuList[0]
+                dropdownController.koreanMarketDropdownMenuList[0]
             ? SizedBox(
                 height: fragmentHeight,
                 child: ListView.builder(
@@ -78,7 +75,7 @@ class StockItemList extends StatelessWidget {
                     }),
               ))
         : Obx(() => dropdownController.koreanMarketselectedValue.value ==
-                koreanMarketDropdownMenuList[0]
+                dropdownController.koreanMarketDropdownMenuList[0]
             ? Column(
                 children: [
                   ...stocks

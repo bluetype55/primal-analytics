@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 
-import '../vo_stock(dispose).dart';
+import '../../vo_stock(dispose).dart';
 
 class OriginStockItem extends StatelessWidget {
   final Stock stock;

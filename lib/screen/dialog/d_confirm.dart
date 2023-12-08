@@ -7,8 +7,10 @@ import '../../common/common.dart';
 
 class ConfirmDialog extends DialogWidget<SimpleResult> {
   final String? message;
-  final String buttonText;
+  final String confirmButtonText;
   final String cancelButtonText;
+  final Color? confirmButtonColor;
+  final Color? cancelButtonColor;
   final bool cancelable;
   final TextAlign textAlign;
   final double messageFontSize;
@@ -18,15 +20,17 @@ class ConfirmDialog extends DialogWidget<SimpleResult> {
   ConfirmDialog({
     super.context,
     super.key,
-    String? buttonText,
+    String? confirmButtonText,
     String? cancelButtonText,
     this.message,
     this.messageFontSize = 18,
     this.buttonFontSize = 16,
+    this.confirmButtonColor,
+    this.cancelButtonColor,
     this.cancelable = true,
     this.textAlign = TextAlign.center,
     this.function,
-  })  : buttonText = buttonText ?? 'confirm'.tr(),
+  })  : confirmButtonText = confirmButtonText ?? 'confirm'.tr(),
         cancelButtonText = cancelButtonText ?? 'cancel'.tr();
 
   @override
@@ -58,8 +62,8 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
                         child: Text(
                           widget.message ?? 'confirm_message'.tr(),
                           style: TextStyle(
+                              fontWeight: FontWeight.bold,
                               fontSize: widget.messageFontSize,
-                              height: 1.8,
                               color: context.appColors.text),
                           textAlign: widget.textAlign,
                         ),
@@ -84,7 +88,8 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
                             child: Text(
                               widget.cancelButtonText,
                               style: TextStyle(
-                                color: context.appColors.lessImportant,
+                                color: widget.cancelButtonColor ??
+                                    context.appColors.lessImportant,
                                 fontSize: widget.buttonFontSize,
                                 fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.normal,
@@ -104,9 +109,10 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
                             height: 50,
                             alignment: Alignment.center,
                             child: Text(
-                              widget.buttonText,
+                              widget.confirmButtonText,
                               style: TextStyle(
-                                color: context.appColors.confirmText,
+                                color: widget.confirmButtonColor ??
+                                    context.appColors.confirmText,
                                 fontSize: widget.buttonFontSize,
                                 fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.normal,

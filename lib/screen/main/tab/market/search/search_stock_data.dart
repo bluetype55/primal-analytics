@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:korea_regexp/korea_regexp.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_industry_info.dart';
@@ -6,11 +7,10 @@ import '../../../../../data/stock_api/stock_service.dart';
 import '../../../../../data/stock_api/vo_stock_data.dart';
 
 abstract mixin class SearchStockDataProvider {
-  late final searchData = Get.find<SearchStockData>();
+  late final searchData = Get.put(SearchStockData());
 }
 
-class SearchStockData extends GetxController {
-  StockService stockService = Get.find<StockService>();
+class SearchStockData extends GetxController with StockServiceProvider {
   List<StockData> stocks = [];
   RxList<StockData> autoCompleteStocksList = <StockData>[].obs;
   List<StockIndustryInfo> stocksInfo = [];
@@ -19,15 +19,19 @@ class SearchStockData extends GetxController {
   RxList<StockData> searchHistoryList = <StockData>[].obs;
   RxList<StockData> popularStockList = <StockData>[].obs;
   RxList<String> popularKeywordList = <String>[].obs;
+  final TextEditingController keywordController = TextEditingController();
 
   @override
   void onInit() {
+    keywordController.addListener(() {
+      search(keywordController.text);
+    });
     //searchHistoryList.addAll([]);
-    loadLocalStockJson();
+    loadStockDataList();
     super.onInit();
   }
 
-  Future<void> loadLocalStockJson() async {
+  Future<void> loadStockDataList() async {
     final jsonList = stockService.krxStockDataList.value;
     if (jsonList != null) {
       stocks.addAll(jsonList);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/s_search_stock.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/f_currencies.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/f_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/currencies/f_currencies.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/f_stock.dart';
 
 class MarketFragment extends StatefulWidget {
   const MarketFragment({super.key});
@@ -39,7 +39,7 @@ class _MarketFragmentState extends State<MarketFragment>
             IconButton(
                 icon: const Icon(Icons.search),
                 onPressed: () {
-                  Nav.push(const SearchStockScreen());
+                  Nav.push(SearchStockScreen());
                 }),
           ],
         ),
@@ -49,7 +49,7 @@ class _MarketFragmentState extends State<MarketFragment>
               if (currentIndex == 0)
                 const StockFragment()
               else
-                const CurrenciesFragment()
+                CurrenciesFragment()
             ],
           ),
         ),

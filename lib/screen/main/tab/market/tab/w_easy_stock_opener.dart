@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/s_stock_details.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_item.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/s_stock_details.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_item.dart';
 
 import '../../../../../data/stock_api/vo_stock_data.dart';
 

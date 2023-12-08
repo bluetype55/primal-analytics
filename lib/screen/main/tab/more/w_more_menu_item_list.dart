@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/setting/s_setting_screen.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/s_setting_screen.dart';
 
 import '../../../opensource/s_opensource.dart';
 import '../../../payment/s_payment_screen.dart';

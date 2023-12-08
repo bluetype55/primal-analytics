@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock_filter_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/stock_filter_provider.dart';
 
 class StockFilter extends StatelessWidget with StockFilterProvider {
   StockFilter({super.key});
@@ -23,7 +23,10 @@ class StockFilter extends StatelessWidget with StockFilterProvider {
                   margin: const EdgeInsets.only(right: 8),
                   child: Row(
                     children: [
-                      filter.text.bold
+                      filter
+                          .tr()
+                          .text
+                          .bold
                           .color(stockFilter.selectedFilter.value == filter
                               ? context.appColors.roundedLayoutBackgorund
                               : context.appColors.activate)

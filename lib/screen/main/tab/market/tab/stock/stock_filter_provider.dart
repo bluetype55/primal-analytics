@@ -6,7 +6,7 @@ abstract mixin class StockFilterProvider {
 }
 
 class StockFilterController extends GetxController {
-  List<String> filterList = ['거래량', '상승폭', '하락폭', '시가총액'];
+  List<String> filterList = ['most_actives', 'gainers', 'losers', 'market_cap'];
 
   late final RxString selectedFilter = filterList[0].obs; // GetX의 반응형 변수
   final RxString sortBy = 'amount'.obs;

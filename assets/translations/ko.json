@@ -11,6 +11,15 @@
   "setting" : "설정",
   "cancel": "취소",
   "confirm" : "확인",
+  "clear" : "전체 삭제",
   "all": "전체",
-  "more": "더보기"
+  "market": "시장",
+  "news": "뉴스",
+  "analyze": "분석",
+  "watchlist": "관심목록",
+  "more": "더보기",
+  "most_actives": "거래량",
+  "gainers": "상승폭",
+  "losers": "하락폭",
+  "market_cap": "시가총액"
 }

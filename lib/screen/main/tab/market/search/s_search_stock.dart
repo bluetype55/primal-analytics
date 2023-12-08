@@ -8,31 +8,14 @@ import 'package:primal_analytics/screen/main/tab/market/search/w_search_auto_cop
 import 'package:primal_analytics/screen/main/tab/market/search/w_search_history_stock_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_stock_search_app_bar.dart';
 
-class SearchStockScreen extends StatefulWidget {
-  const SearchStockScreen({super.key});
-
-  @override
-  State<SearchStockScreen> createState() => _SearchStockScreenState();
-}
-
-class _SearchStockScreenState extends State<SearchStockScreen>
-    with SearchStockDataProvider {
-  final controller = TextEditingController();
-
-  @override
-  void initState() {
-    Get.put(SearchStockData());
-    controller.addListener(() {
-      searchData.search(controller.text);
-    });
-    super.initState();
-  }
+class SearchStockScreen extends StatelessWidget with SearchStockDataProvider {
+  SearchStockScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: StockSearchAppBar(
-        controller: controller,
+        controller: searchData.keywordController,
       ),
       body: Obx(
         () => searchData.autoCompleteStocksList.isEmpty
@@ -45,7 +28,8 @@ class _SearchStockScreenState extends State<SearchStockScreen>
                   const PopularSearchStockList(),
                 ],
               )
-            : SearchAutoCompleteList(controller).pSymmetric(h: 10),
+            : SearchAutoCompleteList(searchData.keywordController)
+                .pSymmetric(h: 10),
       ),
     );
   }

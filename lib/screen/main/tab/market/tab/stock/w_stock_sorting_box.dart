@@ -1,26 +1,22 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/widget/w_arrow.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/s_stock_list.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock_filter_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/s_stock_list.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/stock_filter_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_filter.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_item_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/w_korean_market_dropdown.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_filter.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_stock_item_list.dart';
 
-import '../../../../../data/stock_api/stock_service.dart';
-import 'dropdown_controller.dart';
+import '../../../../../../data/stock_api/stock_service.dart';
 
-class StockSortingBox extends StatelessWidget with StockFilterProvider {
+class StockSortingBox extends StatelessWidget
+    with StockServiceProvider, StockFilterProvider {
   StockSortingBox(
     this.title, {
     super.key,
   });
-  final StockService stockService = Get.find<StockService>();
-  final DropdownController dropdownController = Get.find<DropdownController>();
   final String title;
 
   @override
@@ -36,8 +32,7 @@ class StockSortingBox extends StatelessWidget with StockFilterProvider {
                 width10,
                 title.text.size(20).bold.make(),
                 emptyExpanded,
-                KoreanMarketDropdownButton(
-                    dropdownController: dropdownController),
+                KoreanMarketDropdownButton(),
               ],
             ),
             StockFilter(),

@@ -11,6 +11,15 @@
   "setting" : "Settings",
   "cancel": "Cancel",
   "confirm" : "Confirm",
+  "clear" : "Clear",
   "all": "All",
-  "more": "More"
+  "market": "Market",
+  "news": "News",
+  "analyze": "Analyze",
+  "watchlist": "Watchlist",
+  "more": "More",
+  "most_actives": "Most Actives",
+  "gainers": "Gainers",
+  "losers": "Losers",
+  "market_cap": "Market Cap"
 }

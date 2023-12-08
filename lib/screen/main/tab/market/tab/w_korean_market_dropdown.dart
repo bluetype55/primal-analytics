@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/dropdown_provider.dart';
 
-import 'dropdown_controller.dart';
-import 'dropdown_menu_list.dart';
-
-class KoreanMarketDropdownButton extends StatelessWidget {
-  const KoreanMarketDropdownButton({
-    super.key,
-    required this.dropdownController,
-  });
-
-  final DropdownController dropdownController;
+class KoreanMarketDropdownButton extends StatelessWidget with DropdownProvider {
+  KoreanMarketDropdownButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => DropdownButton(
           value: dropdownController.koreanMarketselectedValue.value,
-          items: koreanMarketDropdownMenuList.map((String value) {
+          items: dropdownController.koreanMarketDropdownMenuList
+              .map((String value) {
             return DropdownMenuItem<String>(
                 value: value,
                 child: value == 'all'

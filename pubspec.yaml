@@ -91,6 +91,9 @@ dependencies:
 
   #hangul
   korea_regexp: ^1.2.1
+
+  #chart
+  fl_chart: ^0.65.0
   
 
 

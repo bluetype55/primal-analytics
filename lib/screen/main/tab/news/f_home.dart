@@ -91,7 +91,7 @@ class NewsFragment extends StatelessWidget {
   Future<void> showConfirmDialog(BuildContext context) async {
     final confirmDialogResult = await ConfirmDialog(
       message: '오늘 기분이 좋나요?',
-      buttonText: "네",
+      confirmButtonText: "네",
       cancelButtonText: "아니오",
     ).show();
     debugPrint(confirmDialogResult?.isSuccess.toString());

@@ -3,8 +3,8 @@ import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/dart/extension/datetime_extension.dart';
 import 'package:primal_analytics/common/data/preference/app_preferences.dart';
 import 'package:primal_analytics/common/widget/w_big_button.dart';
-import 'package:primal_analytics/screen/main/tab/market/setting/d_number.dart';
-import 'package:primal_analytics/screen/main/tab/market/setting/w_switch_menu.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/d_number.dart';
+import 'package:primal_analytics/screen/main/tab/more/settings/w_switch_menu.dart';
 import 'package:primal_analytics/screen/opensource/s_opensource.dart';
 
 import '../../../../../common/data/preference/prefs.dart';

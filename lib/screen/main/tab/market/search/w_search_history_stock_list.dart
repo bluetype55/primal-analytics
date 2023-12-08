@@ -1,11 +1,10 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/dialog/d_confirm.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
 
-import '../tab/s_stock_details.dart';
+import '../tab/stock/details/s_stock_details.dart';
 
 class SearchHistoryStockList extends StatefulWidget {
   const SearchHistoryStockList({super.key});
@@ -28,10 +27,14 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
             Tap(
               onTap: () {
                 ConfirmDialog(
+                  message: '조회 목록을 삭제 하시겠습니까?',
                   function: searchData.removeAllHistory,
+                  confirmButtonText: 'clear'.tr(),
+                  confirmButtonColor: context.appColors.allertText,
                 ).show();
               },
-              child: '전체 삭제'
+              child: 'clear'
+                  .tr()
                   .text
                   .size(12)
                   .color(context.appColors.lessImportant)
@@ -58,18 +61,11 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
                       margin: const EdgeInsets.only(right: 8),
                       child: Row(
                         children: [
-                          OpenContainer(
-                            transitionType:
-                                ContainerTransitionType.fade, // 애니메이션 효과 설정
-                            closedColor: Colors.transparent, // 닫힌 상태의 배경색
-                            closedBuilder: (context, action) {
-                              return stock.name.text
-                                  .make(); // 아이템을 탭하면 상세 화면 열기
+                          Tap(
+                            onTap: () {
+                              Nav.push(StockDetailsScreen(stock.code));
                             },
-                            openBuilder: (context, action) {
-                              return StockDetailsScreen(
-                                  stock.code); // 상세 화면 위젯 반환
-                            },
+                            child: stock.name.text.make(),
                           ),
                           width5,
                           Tap(

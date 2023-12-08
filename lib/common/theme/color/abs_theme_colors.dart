@@ -40,6 +40,8 @@ abstract class AbstractThemeColors {
 
   Color get confirmText => AppColors.green;
 
+  Color get allertText => const Color.fromARGB(255, 230, 71, 83);
+
   Color get drawerText => text;
 
   Color get snackbarBgColor => AppColors.mediumBlue;

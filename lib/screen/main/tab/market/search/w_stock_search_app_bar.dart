@@ -21,6 +21,8 @@ class StockSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Nav.pop(context);
                   } else {
                     controller.clear();
+                    FocusScope.of(context).unfocus();
+                    AppKeyboardUtil.hide(context);
                   }
                 },
                 child: const SizedBox(

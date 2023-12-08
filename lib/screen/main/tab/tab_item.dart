@@ -8,11 +8,11 @@ import 'news/f_home.dart';
 import 'watchlist/f_ttosspay.dart';
 
 enum TabItem {
-  market(Icons.area_chart, '시장', MarketFragment()),
-  news(Icons.newspaper, '뉴스', NewsFragment()),
-  analyze(Icons.analytics_outlined, '분석', AnalyzeFragment()),
-  watchlist(Icons.star, '관심목록', WatchlistFragment()),
-  more(Icons.menu, '더보기', MoreFragment());
+  market(Icons.area_chart, 'market', MarketFragment()),
+  news(Icons.newspaper, 'news', NewsFragment()),
+  analyze(Icons.analytics_outlined, 'analyze', AnalyzeFragment()),
+  watchlist(Icons.star, 'watchlist', WatchlistFragment()),
+  more(Icons.menu, 'more', MoreFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;
@@ -33,6 +33,6 @@ enum TabItem {
               ? context.appColors.iconButton
               : context.appColors.iconButtonInactivate,
         ),
-        label: tabName);
+        label: tabName.tr());
   }
 }

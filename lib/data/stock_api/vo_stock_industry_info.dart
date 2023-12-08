@@ -35,13 +35,6 @@ class StockIndustryInfo {
     );
   }
 
-  static List<T> fromJsonList<T>(
-    List<dynamic> jsonList,
-    T Function(Map<String, dynamic>) fromJson, // 객체 생성을 위한 함수
-  ) {
-    return jsonList.map((json) => fromJson(json)).toList();
-  }
-
   @override
   String toString() {
     return '$name $industry';

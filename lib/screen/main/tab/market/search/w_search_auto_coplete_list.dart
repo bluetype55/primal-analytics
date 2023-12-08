@@ -1,9 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/w_simple_stock_item.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_simple_stock_item.dart';
 
-import '../tab/s_stock_details.dart';
+import '../tab/stock/details/s_stock_details.dart';
 
 class SearchAutoCompleteList extends StatelessWidget
     with SearchStockDataProvider {
@@ -23,9 +23,6 @@ class SearchAutoCompleteList extends StatelessWidget
           },
           openBuilder: (context, action) {
             return StockDetailsScreen(stock.code); // 상세 화면 위젯 반환
-          },
-          onClosed: (data) {
-            searchData.addHistory(stock);
           },
         );
       },
