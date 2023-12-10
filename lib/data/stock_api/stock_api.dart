@@ -26,7 +26,7 @@ mixin StockApi {
         response = await http.get(Uri.parse('$baseUrl/sector?code=$code'));
       case StockDaily:
         response = await http.get(Uri.parse(
-            '$baseUrl/stock_data_day?code=$code&start_date=2023-01-01&end_date=2023-05-30'));
+            '$baseUrl/stock_data_day?code=$code&start_date=2023-11-01&end_date=2023-12-01'));
       default:
         throw Exception("Please check StockApi method");
     }

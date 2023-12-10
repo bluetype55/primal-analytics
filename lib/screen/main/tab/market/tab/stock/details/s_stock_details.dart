@@ -31,18 +31,34 @@ class StockDetailsScreen extends StatelessWidget
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
-          child: idstInfo != null
-              ? Column(
+          child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const MyLineChart(),
-                    idstInfo.name.text.make(),
-                    idstInfo.industry.text.make(),
-                    idstInfo.mainProduct.text.make(),
-                    idstInfo.webSite.text.make(),
+                    MyLineChart(code),
+            FutureBuilder<List<StockIndustryInfo>>(
+              future: stockService.codeToData<StockIndustryInfo>(code),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error.toString()}');
+                } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                  var stockIdst = snapshot.data![0];
+                  return Column(
+                    children: [
+                      stockIdst.name.text.make(),
+                      stockIdst.industry.text.make(),
+                      stockIdst.mainProduct.text.make(),
+                      stockIdst.webSite.text.make(),
+                    ],
+                  );
+
+                } else {
+                  return const Text('No data available');
+                }
+              },),
                   ],
-                )
-              : Container(),
+                ),
         ),
       ),
     );

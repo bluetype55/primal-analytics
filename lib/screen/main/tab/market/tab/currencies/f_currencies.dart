@@ -1,7 +1,8 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:primal_analytics/data/stock_api/vo_stock_daily.dart';
 
 import '../../../../../../data/stock_api/stock_service.dart';
+import '../../../../../../data/stock_api/vo_stock_daily.dart';
 
 class CurrenciesFragment extends StatelessWidget with StockServiceProvider {
   CurrenciesFragment({super.key});
@@ -10,32 +11,46 @@ class CurrenciesFragment extends StatelessWidget with StockServiceProvider {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FutureBuilder<List<StockDaily>>(
-          future: stockService.codeToData<StockDaily>('005930'),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator(); // 로딩 중일 때 보여줄 위젯
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error.toString()}');
-            } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-              var stockDaily = snapshot.data!; // null 체크 후 사용
-              return SizedBox(
-                height: MediaQuery.of(context).size.height -
-                    kBottomNavigationBarHeight * 3,
-                child: ListView.builder(
-                  itemCount: stockDaily.length,
-                  itemBuilder: (context, index) {
-                    var stock = stockDaily[index];
-                    return ListTile(
-                      title: Text("${index + 1}. ${stock.date}"),
-                    );
-                  },
-                ),
-              );
-            } else {
-              return const Text('No data available');
-            }
-          },
+        SizedBox(
+          height: 300,
+          child: FutureBuilder<List<StockDaily>>(
+            future: stockService.codeToData<StockDaily>('005930'),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error.toString()}');
+              } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                var stockDaily = snapshot.data!;
+
+                // 데이터 포인트 생성
+                List<FlSpot> spots = List.generate(stockDaily.length, (index) {
+                  var stock = stockDaily[index];
+                  return FlSpot(index.toDouble(), stock.close.toDouble());
+                });
+
+                return LineChart(
+                  LineChartData(
+                    gridData: const FlGridData(show: true),
+                    titlesData: const FlTitlesData(show: true, leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false))),
+                    borderData: FlBorderData(show: true),
+                    lineBarsData: [
+                      LineChartBarData(
+                        spots: spots, // 생성한 데이터 포인트 사용
+                        isCurved: false,
+                        barWidth: 2,
+                        isStrokeCapRound: true,
+                        dotData: const FlDotData(show: false),
+                        belowBarData: BarAreaData(show: true),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                return const Text('No data available');
+              }
+            },
+          ),
         ),
       ],
     );
