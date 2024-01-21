@@ -5,7 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:primal_analytics/data/stock_api/vo_simple_stock.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_daily.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_data.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_finance.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_industry_info.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_prediction.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_test.dart';
 
 import '../../screen/opensource/vo_package.dart';
 
@@ -67,6 +70,12 @@ T _tryConverting<T>(dynamic json) {
       return StockIndustryInfo.fromJson(json) as T;
     case StockDaily:
       return StockDaily.fromJson(json) as T;
+    case StockTest:
+      return StockTest.fromJson(json) as T;
+    case StockPrediction:
+      return StockPrediction.fromJson(json) as T;
+    case StockFinance:
+      return StockFinance.fromJson(json) as T;
     default:
       throw Exception("Please check _tryConverting method");
   }

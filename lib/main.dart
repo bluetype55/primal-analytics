@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:primal_analytics/data/stock_api/stock_service.dart';
+import 'package:primal_analytics/data/stock_api/finance_service.dart';
 import 'package:primal_analytics/screen/login/auth_controller.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/favorite_provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import 'app.dart';
@@ -20,7 +21,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Get.put(AuthController());
-  Get.lazyPut<StockService>(() => StockService());
+  Get.lazyPut<FinanceService>(() => FinanceService());
+  Get.lazyPut<FavoriteController>(() => FavoriteController());
   await dotenv.load(fileName: ".env");
   await EasyLocalization.ensureInitialized();
   await AppPreferences.init();

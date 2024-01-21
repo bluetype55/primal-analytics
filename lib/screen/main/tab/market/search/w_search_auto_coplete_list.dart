@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_simple_stock_item.dart';
 
 import '../tab/stock/details/s_stock_details.dart';

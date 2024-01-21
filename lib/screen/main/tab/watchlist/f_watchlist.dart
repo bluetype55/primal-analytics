@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/w_favorite_box.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/w_watchlist_box.dart';
 
-import '../../../../data/stock_api/web_crawlring.dart';
-
-class WatchlistFragment extends StatefulWidget {
+class WatchlistFragment extends StatelessWidget {
   const WatchlistFragment({super.key});
-
-  @override
-  State<WatchlistFragment> createState() => _WatchlistFragmentState();
-}
-
-class _WatchlistFragmentState extends State<WatchlistFragment> {
-  void showData() async {
-    WebCrawler webCrawler = WebCrawler();
-    List<List<dynamic>> data = await webCrawler.fetchDataAndSaveToFile();
-    print(data);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +19,12 @@ class _WatchlistFragmentState extends State<WatchlistFragment> {
           ),
           title: '관심목록'.text.make(),
         ),
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Column(
-            children: [],
+            children: [
+              WatchlistBox(),
+              FavoriteBox(),
+            ],
           ),
         ),
       ],

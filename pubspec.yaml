@@ -94,6 +94,15 @@ dependencies:
 
   #chart
   fl_chart: ^0.65.0
+  candlesticks: ^2.1.0
+  simple_candlestick_chart: ^0.1.0
+  k_chart: ^0.7.1
+
+  #mysql
+  mysql1: ^0.20.0
+  mysql_client: ^0.0.27
+
+
   
 
 

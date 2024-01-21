@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/vo_popular_stock(dispose).dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_data.dart';
 
 class PopularStockItem extends StatelessWidget {
-  final PopularStock stock;
+  final StockData stock;
   final int number;
   const PopularStockItem(
       {super.key, required this.stock, required this.number});
@@ -16,7 +16,7 @@ class PopularStockItem extends StatelessWidget {
         width30,
         stock.name.text.make(),
         emptyExpanded,
-        stock.todayPercentageString.text
+        stock.changesRatioString.text
             .color(stock.getPriceColor(context))
             .make(),
       ],

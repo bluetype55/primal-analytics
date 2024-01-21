@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../data/stock_api/stock_service.dart';
+import '../../../../../../data/stock_api/finance_service.dart';
 import '../../../../../../data/stock_api/vo_stock_daily.dart';
 
-class CurrenciesFragment extends StatelessWidget with StockServiceProvider {
+class CurrenciesFragment extends StatelessWidget with FinanceServiceProvider {
   CurrenciesFragment({super.key});
 
   @override
@@ -14,7 +14,7 @@ class CurrenciesFragment extends StatelessWidget with StockServiceProvider {
         SizedBox(
           height: 300,
           child: FutureBuilder<List<StockDaily>>(
-            future: stockService.codeToData<StockDaily>('005930'),
+            future: finService.codeToData<StockDaily>('005930'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
@@ -32,7 +32,10 @@ class CurrenciesFragment extends StatelessWidget with StockServiceProvider {
                 return LineChart(
                   LineChartData(
                     gridData: const FlGridData(show: true),
-                    titlesData: const FlTitlesData(show: true, leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false))),
+                    titlesData: const FlTitlesData(
+                        show: true,
+                        leftTitles: AxisTitles(
+                            sideTitles: SideTitles(showTitles: false))),
                     borderData: FlBorderData(show: true),
                     lineBarsData: [
                       LineChartBarData(

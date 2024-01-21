@@ -35,7 +35,7 @@ class StockItemList extends StatelessWidget with DropdownProvider {
         case 'amount':
           return compareFunc<int>(a.amount, b.amount, ascending);
         default:
-          return compareFunc<int>(a.amount, b.amount, ascending); // 기본값이나 오류 처리
+          return 0; // 기본값이나 오류 처리
       }
     });
   }

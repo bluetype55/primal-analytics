@@ -9,7 +9,7 @@ import 'package:primal_analytics/screen/main/tab/tab_navigator.dart';
 import 'package:primal_analytics/screen/main/w_menu_drawer.dart';
 
 import '../../common/common.dart';
-import '../../data/stock_api/stock_service.dart';
+import '../../data/stock_api/finance_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -43,7 +43,7 @@ class MainScreenState extends State<MainScreen>
 
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) async {
-    StockService stockService = Get.find<StockService>();
+    FinanceService stockService = Get.find<FinanceService>();
     ever(stockService.isKrxStockLoading, (isLoading) {
       if (!isLoading) {
         // 로딩이 끝났으면 스플래시 화면 제거

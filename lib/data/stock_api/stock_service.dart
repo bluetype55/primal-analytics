@@ -1,47 +1,55 @@
-import 'package:get/get.dart';
-import 'package:primal_analytics/data/stock_api/stock_api.dart';
+import 'dart:convert';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
+import 'package:primal_analytics/common/util/local_json.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_daily.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_data.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_finance.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_industry_info.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_prediction.dart';
+import 'package:primal_analytics/data/stock_api/vo_stock_test.dart';
 
-abstract mixin class StockServiceProvider {
-  final StockService stockService = Get.find<StockService>();
-}
+mixin StockService {
+  String get baseUrl => dotenv.env['linux_server_api']!;
+  String get apiKey => dotenv.env['linux_server_api_key']!;
 
-class StockService extends GetxService with StockApi {
-  var krxStockDataList =
-      Rxn<List<StockData>>(); // Rxn을 사용하여 nullable한 반응형 상태 관리
-  var krxStockIndustryInfoList = Rxn<List<StockIndustryInfo>>();
-  var isKrxStockLoading = true.obs; // 로딩 상태 관리
+  Future<List<T>> fetchMarketData<T>(String market) async {
+    final http.Response response;
+    response = await http.get(Uri.parse('$baseUrl/$market?start=0&end=100'));
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchAllKrxData();
+    return LocalJson.fetchKoreanObjectList<T>(response);
   }
 
-  Future<void> fetchAllKrxData() async {
-    try {
-      isKrxStockLoading(true);
-      krxStockDataList.value = await fetchMarketData<StockData>('krx');
-      krxStockIndustryInfoList.value =
-          await fetchMarketData<StockIndustryInfo>('sector');
-    } catch (e) {
-      print("Error fetching stock data: $e");
-    } finally {
-      isKrxStockLoading(false);
-    }
-  }
-
-  T? findingDataWithCode<T>(String code) {
+  Future<List<T>> codeToData<T>(String code, [String? market]) async {
+    String marketValue = market ?? "krx";
+    final http.Response response;
     switch (T) {
       case StockData:
-        return krxStockDataList.value
-            ?.firstWhereOrNull((stock) => stock.code == code) as T?;
+        response =
+            await http.get(Uri.parse('$baseUrl/$marketValue?code=$code'));
       case StockIndustryInfo:
-        return krxStockIndustryInfoList.value
-            ?.firstWhereOrNull((stock) => stock.code == code) as T?;
+        response = await http.get(Uri.parse('$baseUrl/sector?code=$code'));
+      case StockDaily:
+        response = await http.get(Uri.parse(
+            '$baseUrl/stock_data_day?code=$code&start_date=2021-11-01&end_date=2023-12-01'));
+      case StockTest:
+        response = await http.get(Uri.parse(
+            '$baseUrl/get_testData?code=$code&start_date=2023-11-01&end_date=2023-12-01'));
+      case StockPrediction:
+        response = await http.post(
+          Uri.parse('$baseUrl/get_prediction'),
+          headers: {
+            'Content-Type': 'application/json',
+            'X-API-Key': apiKey,
+          },
+          body: json.encode({'code': code}),
+        );
+      case StockFinance:
+        response = await http.get(Uri.parse('$baseUrl/PerPbr?code=$code'));
       default:
         throw Exception("Please check StockApi method");
     }
+    return LocalJson.fetchKoreanObjectList<T>(response);
   }
 }

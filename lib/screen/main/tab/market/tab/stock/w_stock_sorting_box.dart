@@ -9,10 +9,10 @@ import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_filter
 import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_item_list.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/w_korean_market_dropdown.dart';
 
-import '../../../../../../data/stock_api/stock_service.dart';
+import '../../../../../../data/stock_api/finance_service.dart';
 
 class StockSortingBox extends StatelessWidget
-    with StockServiceProvider, StockFilterProvider {
+    with FinanceServiceProvider, StockFilterProvider {
   StockSortingBox(
     this.title, {
     super.key,
@@ -38,11 +38,11 @@ class StockSortingBox extends StatelessWidget
             StockFilter(),
             Column(
               children: [
-                Obx(() => stockService.krxStockDataList.value != null
+                Obx(() => finService.krxStockDataList.value != null
                         ? Column(
                             children: [
                               StockItemList(
-                                stockService.krxStockDataList.value!,
+                                finService.krxStockDataList.value!,
                                 limit: 5,
                                 sortby: stockFilter.sortBy.value,
                                 ascending: stockFilter.ascending.value,
@@ -73,11 +73,11 @@ class StockSortingBox extends StatelessWidget
                 ); // 아이템을 탭하면 상세 화면 열기
               },
               openBuilder: (context, action) {
-                return stockService.krxStockDataList.value != null
+                return finService.krxStockDataList.value != null
                     ? StockListScreen(
                         title: title,
                         stockItemList: StockItemList(
-                          stockService.krxStockDataList.value!,
+                          finService.krxStockDataList.value!,
                           sortby: stockFilter.sortBy.value,
                           ascending: stockFilter.ascending.value,
                         ),

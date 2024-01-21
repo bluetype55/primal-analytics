@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  buffer:
+    dependency: transitive
+    description:
+      name: buffer
+      sha256: "94f60815065a8f0fd4f05be51faf86cf86519327e039d5c2aac72e1d1cc1dad4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.2"
   build:
     dependency: transitive
     description:
@@ -169,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  candlesticks:
+    dependency: "direct main"
+    description:
+      name: candlesticks
+      sha256: aeb7dff279f64bcfa1d07cdd18325a0a02f14e1af408ffb2d9f8ee796231876e
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   change_app_package_name:
     dependency: "direct main"
     description:
@@ -741,6 +757,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.7.1"
+  k_chart:
+    dependency: "direct main"
+    description:
+      name: k_chart
+      sha256: "059163563285cc001dc0257880f598774c63791155a7e0f3a37064dda89c9168"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.1"
   keyboard_utils_fork:
     dependency: "direct main"
     description:
@@ -821,6 +845,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0-nullsafety.1"
+  mysql1:
+    dependency: "direct main"
+    description:
+      name: mysql1
+      sha256: "68aec7003d2abc85769bafa1777af3f4a390a90c31032b89636758ff8eb839e9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.0"
+  mysql_client:
+    dependency: "direct main"
+    description:
+      name: mysql_client
+      sha256: "6a0fdcbe3e0721c637f97ad24649be2f70dbce2b21ede8f962910e640f753fc2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.27"
   nav:
     dependency: "direct main"
     description:
@@ -1101,6 +1141,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  simple_candlestick_chart:
+    dependency: "direct main"
+    description:
+      name: simple_candlestick_chart
+      sha256: "98b30ef635aed8602942d8a78aacbaf9e1ffdfae58ef81a2da3af0937077f354"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   simple_shadow:
     dependency: "direct main"
     description:

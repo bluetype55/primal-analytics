@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/dialog/d_confirm.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
 
 import '../tab/stock/details/s_stock_details.dart';
 
