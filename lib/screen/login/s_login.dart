@@ -4,7 +4,8 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/dialog/d_message.dart';
 import 'package:primal_analytics/screen/login/auth_controller.dart';
-import 'package:primal_analytics/screen/main/s_main.dart';
+
+import '../../app.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -26,9 +27,9 @@ class LoginScreen extends StatelessWidget {
               MessageDialog('로그인 실패').show();
               return;
             }
-            if (context.mounted) Nav.push(const MainScreen());
+            if (context.mounted) AppState().restartApp();
           },
-          child: 'Sign in with Google'.text.make(),
+          child: '구글 아이디로 로그인'.text.make(),
         ),
       ),
     );

@@ -9,6 +9,8 @@ class StockItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String displayName =
+        stock.name.length > 7 ? '${stock.name.substring(0, 7)}...' : stock.name;
     return Column(
       children: [
         Container(
@@ -19,7 +21,13 @@ class StockItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  (stock.name).text.size(18).bold.make(),
+                  (displayName)
+                      .text
+                      .maxLines(1)
+                      .overflow(TextOverflow.ellipsis)
+                      .size(18)
+                      .bold
+                      .make(),
                   '$numb. | ${stock.market}'
                       .text
                       .size(12)

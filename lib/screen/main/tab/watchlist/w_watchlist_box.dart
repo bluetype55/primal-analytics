@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/data/stock_api/finance_service.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/favorite_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_stock_item_list.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
 import '../../../../common/common.dart';
 
@@ -19,6 +19,7 @@ class WatchlistBox extends StatelessWidget
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16),
         child: Column(
           children: [
+            height10,
             Row(
               children: [
                 width10,

@@ -6,7 +6,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/data/stock_api/finance_service.dart';
 import 'package:primal_analytics/screen/login/auth_controller.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/favorite_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import 'app.dart';
@@ -23,6 +24,7 @@ void main() async {
   Get.put(AuthController());
   Get.lazyPut<FinanceService>(() => FinanceService());
   Get.lazyPut<FavoriteController>(() => FavoriteController());
+  Get.lazyPut<SearchStockData>(() => SearchStockData());
   await dotenv.load(fileName: ".env");
   await EasyLocalization.ensureInitialized();
   await AppPreferences.init();

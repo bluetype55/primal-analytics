@@ -10,7 +10,7 @@ import '../../../../../data/stock_api/finance_service.dart';
 import '../../../../../data/stock_api/vo_stock_data.dart';
 
 abstract mixin class SearchStockDataProvider {
-  late final searchData = Get.put(SearchStockData());
+  final searchData = Get.find<SearchStockData>();
 }
 
 class SearchStockData extends GetxController with FinanceServiceProvider {
@@ -30,10 +30,8 @@ class SearchStockData extends GetxController with FinanceServiceProvider {
     keywordController.addListener(() {
       search(keywordController.text);
     });
-    //searchHistoryList.addAll([]);
     loadStockDataList();
     getHistory();
-    getTodayStockRaking();
     super.onInit();
   }
 
@@ -55,9 +53,10 @@ class SearchStockData extends GetxController with FinanceServiceProvider {
                 keyword,
                 const RegExpOptions(
                   initialSearch: true,
-                  startsWith: true,
                   ignoreSpace: true,
                   ignoreCase: true,
+                  fuzzy: true,
+                  global: true,
                 ),
               ).hasMatch(element.name))
           .toList();
@@ -96,19 +95,28 @@ class SearchStockData extends GetxController with FinanceServiceProvider {
 
   //주식 조회 정보를 가져오기
   Future<void> getTodayStockRaking() async {
-    // 현재 날짜를 문자열 형태로 가져옵니다.
-    String currentDate = DateTime.now().formattedDate;
-
     DocumentReference dateDocRef =
         FirebaseFirestore.instance.collection('stockViews').doc('날짜별');
 
-    var doc = await dateDocRef.get();
-    if (doc.exists) {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      Map<String, int> datalist =
-          Map<String, int>.from(data[currentDate] ?? {});
+    DateTime currentDate = DateTime.now();
+    Map<String, dynamic> data;
+    Map<String, int> datalist = {};
 
-      //stock 형식으로 바꿔서 리스트에 저장
+    for (int i = 0; i < 3; i++) {
+      // 오늘, 전날, 그 전날까지 확인
+      String dateString = currentDate.subtract(Duration(days: i)).formattedDate;
+      var doc = await dateDocRef.get();
+      if (doc.exists) {
+        data = doc.data() as Map<String, dynamic>;
+        if (data.containsKey(dateString)) {
+          datalist = Map<String, int>.from(data[dateString]);
+          break; // 데이터를 찾으면 반복문을 종료합니다.
+        }
+      }
+    }
+
+    if (datalist.isNotEmpty) {
+      // stock 형식으로 바꿔서 리스트에 저장
       var tempStockList = <Map<String, dynamic>>[];
       for (var entry in datalist.entries) {
         var code = entry.key;
@@ -120,17 +128,16 @@ class SearchStockData extends GetxController with FinanceServiceProvider {
       }
       // tempStockList를 views 값에 따라 다시 정렬
       tempStockList.sort((a, b) => b['views'].compareTo(a['views']));
-
       // 최종적으로 StockData 객체만 추출하여 리스트에 저장
       var finalStockList =
           tempStockList.map((e) => e['stockData'] as StockData).toList();
       popularStockList.value = finalStockList;
     } else {
-      popularStockList.value = []; // 문서가 없는 경우
+      popularStockList.value = []; // 이전 3일간 데이터가 없는 경우
     }
   }
 
-  void addHistory(StockData stock) async {
+  Future<void> addHistory(StockData stock) async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       String uid = user.uid;

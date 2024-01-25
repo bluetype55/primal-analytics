@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/theme/custom_theme_app.dart';
 import 'package:primal_analytics/screen/main/s_main.dart';
+import 'package:primal_analytics/screen/main/tab/more/payment/payment_provider.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
 import 'common/theme/custom_theme.dart';
 
@@ -32,6 +35,18 @@ class AppState extends State<App> with Nav, WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  //앱 재시작
+  void restartApp() {
+    final paymentController = Get.put(PaymentController());
+    final FavoriteController favoriteController =
+        Get.find<FavoriteController>();
+    paymentController.getCurrentSubscriptIndex();
+    favoriteController.loadInitialData();
+    navigatorKey.currentState?.popUntil((route) => route.isFirst);
+    navigatorKey.currentState?.pushReplacement(
+        MaterialPageRoute(builder: (context) => const MainScreen()));
   }
 
   @override

@@ -32,10 +32,11 @@ class _MoreAppBarState extends State<MoreAppBar> {
             final User? user = authController.firebaseUser.value;
             if (user == null) {
               return ElevatedButton(
-                  onPressed: () {
-                    Nav.push(LoginScreen());
-                  },
-                  child: Text('login'.tr()));
+                onPressed: () {
+                  Nav.push(LoginScreen());
+                },
+                child: Text('login'.tr()),
+              );
             } else {
               return Row(
                 children: [

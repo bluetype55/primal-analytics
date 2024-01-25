@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:primal_analytics/app.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
@@ -41,6 +42,7 @@ class LanguageOption extends StatelessWidget {
                       }
                       await context
                           .setLocale(Language.find(value.toLowerCase()).locale);
+                      AppState().restartApp();
                     },
                     value: describeEnum(currentLanguage).capitalizeFirst,
                     underline: const SizedBox.shrink(),

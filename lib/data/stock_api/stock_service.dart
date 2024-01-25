@@ -16,7 +16,7 @@ mixin StockService {
 
   Future<List<T>> fetchMarketData<T>(String market) async {
     final http.Response response;
-    response = await http.get(Uri.parse('$baseUrl/$market?start=0&end=100'));
+    response = await http.get(Uri.parse('$baseUrl/$market'));
 
     return LocalJson.fetchKoreanObjectList<T>(response);
   }
@@ -31,11 +31,11 @@ mixin StockService {
       case StockIndustryInfo:
         response = await http.get(Uri.parse('$baseUrl/sector?code=$code'));
       case StockDaily:
-        response = await http.get(Uri.parse(
-            '$baseUrl/stock_data_day?code=$code&start_date=2021-11-01&end_date=2023-12-01'));
+        response =
+            await http.get(Uri.parse('$baseUrl/stock_data_day?code=$code'));
       case StockTest:
-        response = await http.get(Uri.parse(
-            '$baseUrl/get_testData?code=$code&start_date=2023-11-01&end_date=2023-12-01'));
+        response =
+            await http.get(Uri.parse('$baseUrl/get_testData?code=$code'));
       case StockPrediction:
         response = await http.post(
           Uri.parse('$baseUrl/get_prediction'),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/favorite_provider.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
 class FavoriteHeartWidget extends StatelessWidget with FavoriteProvider {
   FavoriteHeartWidget(

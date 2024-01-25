@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../app.dart';
+
 class AuthController extends GetxController {
   Rx<User?> firebaseUser = Rx<User?>(null);
 
@@ -42,5 +44,6 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     await googleSignIn.signOut();
     await _auth.signOut();
+    AppState().restartApp();
   }
 }

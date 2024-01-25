@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/more/payment/s_payment_screen.dart';
 import 'package:primal_analytics/screen/main/tab/more/settings/s_setting_screen.dart';
 
 import '../../../opensource/s_opensource.dart';
-import '../../../payment/s_payment_screen.dart';
 import '../../w_menu_drawer.dart';
 
 class MoreMenuItemList extends StatelessWidget {
@@ -24,7 +24,7 @@ class MoreMenuItemList extends StatelessWidget {
         MenuItemWidget(
           '결제',
           onTap: () async {
-            Nav.push(const PaymentScreen());
+            Nav.push(PaymentScreen());
           },
         ),
         const Line(),

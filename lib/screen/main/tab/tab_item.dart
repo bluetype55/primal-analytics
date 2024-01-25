@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 
-import 'analyze/f_benefit.dart';
+import 'analyze/f_analyze.dart';
 import 'market/f_market.dart';
-import 'more/f_all.dart';
-import 'news/f_home.dart';
+import 'more/f_more.dart';
+import 'news/f_news.dart';
 import 'watchlist/f_watchlist.dart';
 
 enum TabItem {

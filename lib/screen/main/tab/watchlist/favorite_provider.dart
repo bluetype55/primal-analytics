@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/data/stock_api/finance_service.dart';
 
-import '../../../../../../../data/stock_api/vo_stock_data.dart';
+import '../../../../data/stock_api/vo_stock_data.dart';
 
 abstract mixin class FavoriteProvider {
   // Get.put()을 사용하여 FavoriteController 인스턴스를 생성 및 사용
@@ -17,6 +17,7 @@ class FavoriteController extends GetxController with FinanceServiceProvider {
   var isFavorite = false.obs;
   var favoriteStockList = Rxn<List<StockData>>();
   var watchStocklist = Rxn<List<StockData>>();
+  var maxFavorites = 5.obs;
 
   @override
   void onInit() {
@@ -25,10 +26,17 @@ class FavoriteController extends GetxController with FinanceServiceProvider {
     loadInitialData();
   }
 
+  // 비동기 작업 최적화
   Future<void> loadInitialData() async {
     await finService.ensureDataLoaded();
     await getFavoritesList();
     await getSortedWatchlist();
+  }
+
+  // 최대 즐겨찾기 개수를 업데이트하는 메서드
+  void updateMaxFavorites(int newMax) {
+    maxFavorites.value = newMax;
+    // 필요한 경우, 현재 즐겨찾기 목록을 새 최대 개수에 맞게 조정할 수 있음
   }
 
   //관심목록에 저장
@@ -53,11 +61,13 @@ class FavoriteController extends GetxController with FinanceServiceProvider {
 
         // Firestore 문서 업데이트
         await docRef.update({'watchlist': watchlist});
+        getSortedWatchlist();
       } else {
         // 새 문서 생성
         await docRef.set({
           'watchlist': {code: 1}
         });
+        getSortedWatchlist();
       }
     }
   }
@@ -126,12 +136,17 @@ class FavoriteController extends GetxController with FinanceServiceProvider {
             favorites.remove(code);
             isFavorite.value = false;
           } else {
-            // 즐겨찾기 추가
+            // 즐겨찾기 추가 전 최대 개수 확인
+            if (favorites.length >= maxFavorites.value) {
+              context.showErrorSnackbar('찜 목록 제한 숫자에 도달했습니다.');
+              return;
+            }
             favorites.add(code);
             isFavorite.value = true;
           }
           // Firestore 문서 업데이트
           await docRef.update({'favorites': favorites});
+          getFavoritesList();
         }
       } else {
         // 즐겨찾기 문서가 없는 경우 새로 생성
@@ -139,9 +154,35 @@ class FavoriteController extends GetxController with FinanceServiceProvider {
           'favorites': [code]
         });
         isFavorite.value = true;
+        getFavoritesList();
       }
     } else {
-      context.showSnackbar('로그인이 필요합니다.');
+      context.showErrorSnackbar('로그인이 필요합니다.');
+    }
+  }
+
+  // 즐겨찾기 목록 조절 메서드
+  Future<void> adjustFavoritesList(int maxFavorites) async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      String uid = user.uid;
+      DocumentReference docRef =
+          FirebaseFirestore.instance.collection('users').doc(uid);
+
+      var doc = await docRef.get();
+      if (doc.exists) {
+        var data = doc.data();
+        if (data is Map<String, dynamic>) {
+          List<dynamic> favorites = List.from(data['favorites'] ?? []);
+          while (favorites.length > maxFavorites) {
+            // 최대 개수를 초과하는 경우 가장 오래된 항목 제거
+            favorites.removeAt(0);
+          }
+          // Firestore 문서 업데이트
+          await docRef.update({'favorites': favorites});
+          getFavoritesList();
+        }
+      }
     }
   }
 

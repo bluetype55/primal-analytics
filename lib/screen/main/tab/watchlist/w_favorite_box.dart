@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/favorite_provider.dart';
+import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
 import '../market/tab/stock/w_stock_item_list.dart';
 
@@ -16,6 +16,7 @@ class FavoriteBox extends StatelessWidget with FavoriteProvider {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16),
         child: Column(
           children: [
+            height10,
             Row(
               children: [
                 width10,
@@ -32,8 +33,9 @@ class FavoriteBox extends StatelessWidget with FavoriteProvider {
                     ? Column(
                         children: [
                           StockItemList(
-                              favoriteController.favoriteStockList.value!,
-                              limit: 5),
+                            favoriteController.favoriteStockList.value!,
+                            limit: favoriteController.maxFavorites.value,
+                          ),
                           height30,
                         ],
                       )

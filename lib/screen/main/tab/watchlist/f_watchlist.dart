@@ -8,26 +8,25 @@ class WatchlistFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          pinned: true,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Container(
-              color: context.themeType.themeData.scaffoldBackgroundColor,
-            ),
-          ),
-          title: '관심목록'.text.make(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        title: const Text(
+          '관심목록',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              WatchlistBox(),
-              FavoriteBox(),
-            ],
-          ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            height20,
+            WatchlistBox(),
+            height30,
+            FavoriteBox(),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

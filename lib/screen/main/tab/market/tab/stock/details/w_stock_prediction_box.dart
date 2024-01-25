@@ -24,7 +24,7 @@ class StockPredictionBox extends StatelessWidget with FinanceServiceProvider {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('${stockPrediction[0].name} 예측 주가'),
+                  '${stockPrediction[0].name} 예측 주가'.text.size(18).bold.make(),
                 ],
               ),
               height10,

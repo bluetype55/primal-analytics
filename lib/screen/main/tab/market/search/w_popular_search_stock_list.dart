@@ -5,15 +5,16 @@ import 'package:primal_analytics/common/dart/extension/datetime_extension.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_item.dart';
 
+import '../../../../../data/stock_api/vo_stock_data.dart';
 import '../tab/stock/details/s_stock_details.dart';
 
 class PopularSearchStockList extends StatelessWidget
     with SearchStockDataProvider {
-  PopularSearchStockList({super.key});
+  PopularSearchStockList(this.stockList, {super.key});
+  final List<StockData> stockList;
 
   @override
   Widget build(BuildContext context) {
-    var stockList = searchData.popularStockList;
     return Column(
       children: [
         Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/data/stock_api/finance_service.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_finance.dart';
@@ -16,8 +17,20 @@ class IdstBox extends StatelessWidget with FinanceServiceProvider {
         border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
       ),
       children: [
-        TableCell(child: Center(child: Text(label)).pSymmetric(v: 10)),
-        TableCell(child: value.text.bold.make().pSymmetric(v: 10)),
+        TableCell(
+            child: Center(
+                child: Text(
+          label,
+          overflow: TextOverflow.ellipsis,
+        )).pSymmetric(v: 10)),
+        TableCell(
+          child: value.text
+              .overflow(TextOverflow.clip)
+              .bold
+              .make()
+              .pSymmetric(v: 10)
+              .marginOnly(right: 50),
+        ),
       ],
     );
   }

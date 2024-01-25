@@ -16,19 +16,24 @@ class SearchStockScreen extends StatelessWidget with SearchStockDataProvider {
       appBar: StockSearchAppBar(
         controller: searchData.keywordController,
       ),
-      body: Obx(
-        () => searchData.autoCompleteStocksList.isEmpty
-            ? ListView(
-                children: [
-                  searchData.searchHistoryList.isEmpty
-                      ? Container()
-                      : const SearchHistoryStockList(),
-                  //const PopularSearchWordList(),
-                  PopularSearchStockList(),
-                ],
-              )
-            : SearchAutoCompleteList(searchData.keywordController)
-                .pSymmetric(h: 10),
+      body: FutureBuilder(
+        future: searchData.getTodayStockRaking(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          return Obx(() => searchData.autoCompleteStocksList.isEmpty
+              ? ListView(
+                  children: [
+                    searchData.searchHistoryList.isEmpty
+                        ? Container()
+                        : const SearchHistoryStockList(),
+                    PopularSearchStockList(searchData.popularStockList),
+                  ],
+                )
+              : SearchAutoCompleteList(searchData.keywordController)
+                  .pSymmetric(h: 10));
+        },
       ),
     );
   }
