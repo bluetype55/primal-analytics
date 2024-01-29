@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.fastAppBase</string>
+	<string>com.primal.app</string>
 	<key>PROJECT_ID</key>
 	<string>primal-analytics-81805</string>
 	<key>STORAGE_BUCKET</key>

@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyApiX8bucZcoctyylE2OoCT7k8_-sqLf2g',
-    appId: '1:382112883953:android:1575af6d3e6dfe2211b550',
+    appId: '1:382112883953:android:8f4ab507eced111111b550',
     messagingSenderId: '382112883953',
     projectId: 'primal-analytics-81805',
     storageBucket: 'primal-analytics-81805.appspot.com',
@@ -63,19 +63,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAH-zWVfPEMY_-A17r2ovgt-6Xyj1uR20k',
-    appId: '1:382112883953:ios:942d291cdfe7e41f11b550',
+    appId: '1:382112883953:ios:872d3f0be59e976011b550',
     messagingSenderId: '382112883953',
     projectId: 'primal-analytics-81805',
     storageBucket: 'primal-analytics-81805.appspot.com',
-    iosBundleId: 'com.example.fastAppBase',
+    androidClientId: '382112883953-bbllfq30crmbj8r6990lcvoegbr41vqj.apps.googleusercontent.com',
+    iosClientId: '382112883953-6bsmfrio0ouc5rhgqdjfh80uhrf3vahv.apps.googleusercontent.com',
+    iosBundleId: 'com.primal.app',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAH-zWVfPEMY_-A17r2ovgt-6Xyj1uR20k',
-    appId: '1:382112883953:ios:942d291cdfe7e41f11b550',
+    appId: '1:382112883953:ios:872d3f0be59e976011b550',
     messagingSenderId: '382112883953',
     projectId: 'primal-analytics-81805',
     storageBucket: 'primal-analytics-81805.appspot.com',
-    iosBundleId: 'com.example.fastAppBase',
+    androidClientId: '382112883953-bbllfq30crmbj8r6990lcvoegbr41vqj.apps.googleusercontent.com',
+    iosClientId: '382112883953-6bsmfrio0ouc5rhgqdjfh80uhrf3vahv.apps.googleusercontent.com',
+    iosBundleId: 'com.primal.app',
   );
 }
