@@ -15,14 +15,16 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> with PaymentProvider {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    paymentController.fetchPastPurchases();
+    paymentController.listenToPurchaseUpdates();
     paymentController.selectedBoxIndex.value =
         paymentController.currentSubscriptIndex.value;
   }
 
   @override
   Widget build(BuildContext context) {
+    paymentController.fetchPastPurchases();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -91,6 +93,12 @@ class _PaymentScreenState extends State<PaymentScreen> with PaymentProvider {
                 }
               },
               child: Text('요금제 변경'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                paymentController.openSubscriptionManagementPage(context);
+              },
+              child: Text('구독관리 페이지로 이동'),
             ),
           ],
         ),

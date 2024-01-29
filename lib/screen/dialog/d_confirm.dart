@@ -16,6 +16,7 @@ class ConfirmDialog extends DialogWidget<SimpleResult> {
   final double messageFontSize;
   final double buttonFontSize;
   final Function? function;
+  final Function? cancelFunction;
 
   ConfirmDialog({
     super.context,
@@ -30,6 +31,7 @@ class ConfirmDialog extends DialogWidget<SimpleResult> {
     this.cancelable = true,
     this.textAlign = TextAlign.center,
     this.function,
+    this.cancelFunction,
   })  : confirmButtonText = confirmButtonText ?? 'confirm'.tr(),
         cancelButtonText = cancelButtonText ?? 'cancel'.tr();
 
@@ -80,6 +82,9 @@ class _MessageDialogState extends DialogState<ConfirmDialog> {
                     Expanded(
                       child: Tap(
                         onTap: () {
+                          if (widget.cancelFunction != null) {
+                            widget.cancelFunction!();
+                          }
                           widget.hide(SimpleResult.failure());
                         },
                         child: Container(

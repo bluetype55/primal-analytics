@@ -1,4 +1,4 @@
-package com.ttoss
+package com.primal.app
 
 import io.flutter.embedding.android.FlutterActivity
 
