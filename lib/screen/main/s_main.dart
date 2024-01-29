@@ -24,7 +24,6 @@ class MainScreenState extends State<MainScreen>
   final tabs = [
     TabItem.market,
     TabItem.news,
-    TabItem.analyze,
     TabItem.watchlist,
     TabItem.more,
   ];

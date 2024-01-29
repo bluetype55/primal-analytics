@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 
-import 'analyze/f_analyze.dart';
 import 'market/f_market.dart';
 import 'more/f_more.dart';
 import 'news/f_news.dart';
@@ -10,7 +9,6 @@ import 'watchlist/f_watchlist.dart';
 enum TabItem {
   market(Icons.area_chart, 'market', MarketFragment()),
   news(Icons.newspaper, 'news', NewsFragment()),
-  analyze(Icons.analytics_outlined, 'analyze', AnalyzeFragment()),
   watchlist(Icons.star, 'watchlist', WatchlistFragment()),
   more(Icons.menu, 'more', MoreFragment());
 
