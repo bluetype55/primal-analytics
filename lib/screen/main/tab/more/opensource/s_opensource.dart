@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/util/local_json.dart';
-import 'package:primal_analytics/screen/opensource/vo_package.dart';
+import 'package:primal_analytics/screen/main/tab/more/opensource/vo_package.dart';
 
 import 'w_opensource_item.dart';
 

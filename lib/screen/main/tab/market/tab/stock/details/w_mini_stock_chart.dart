@@ -58,7 +58,7 @@ class MiniStockChart extends StatelessWidget with FinanceServiceProvider {
 
                           // 툴팁에 표시할 텍스트 생성
                           final tooltipText =
-                              '${spotData.date}\n${spotData.close.toComma()}원';
+                              '￦${spotData.date}\n${spotData.close.toComma()}';
 
                           return LineTooltipItem(
                             tooltipText,

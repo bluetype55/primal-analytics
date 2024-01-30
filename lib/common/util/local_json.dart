@@ -10,7 +10,7 @@ import 'package:primal_analytics/data/stock_api/vo_stock_industry_info.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_prediction.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_test.dart';
 
-import '../../screen/opensource/vo_package.dart';
+import '../../screen/main/tab/more/opensource/vo_package.dart';
 
 class LocalJson {
   static Future<List<T>> fetchObjectList<T>(http.Response response) async {

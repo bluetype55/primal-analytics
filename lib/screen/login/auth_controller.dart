@@ -39,7 +39,7 @@ class AuthController extends GetxController {
         return userCredential.user;
       }
     } catch (error) {
-      print(error);
+      MessageDialog('로그인 실패: $error').show();
       return null;
     }
     return null;

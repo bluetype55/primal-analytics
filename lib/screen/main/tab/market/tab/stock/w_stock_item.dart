@@ -40,7 +40,7 @@ class StockItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  '${int.parse(stock.close).toComma()}원'
+                  '￦${int.parse(stock.close).toComma()}'
                       .text
                       .size(16)
                       .bold

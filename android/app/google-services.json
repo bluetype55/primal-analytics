@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "382112883953-9hsqibf1etnpoo23j24s99tske9nrlhd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.primal.app",
+            "certificate_hash": "80ba9565266ef44ffcdb0bd045244e164f407329"
+          }
+        },
+        {
           "client_id": "382112883953-kkj6t1dkbhvpc44lba7to5ctgd7ak0bp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

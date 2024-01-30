@@ -31,7 +31,7 @@ class SimpleStockInfo extends StatelessWidget with FinanceServiceProvider {
                 ),
                 Row(
                   children: [
-                    '${int.parse(stock.close).toComma()}원'
+                    '￦${int.parse(stock.close).toComma()}'
                         .text
                         .bold
                         .size(30)

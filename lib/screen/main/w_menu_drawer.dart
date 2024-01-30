@@ -1,9 +1,9 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:primal_analytics/screen/main/tab/more/opensource/s_opensource.dart';
 import 'package:primal_analytics/screen/main/tab/more/settings/w_color_switch.dart';
 import 'package:primal_analytics/screen/main/tab/more/settings/w_language_option.dart';
-import 'package:primal_analytics/screen/opensource/s_opensource.dart';
 
 import '../../../screen/dialog/d_message.dart';
 import '../../common/common.dart';

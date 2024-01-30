@@ -31,36 +31,36 @@ class StockLearningChart extends StatelessWidget with FinanceServiceProvider {
             Text('실제 데이터'),
           ],
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          reverse: true,
-          child: SizedBox(
-            height: 300,
-            width: 1000,
-            child: FutureBuilder<List<StockTest>>(
-              future: finService.codeToData<StockTest>(code),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error.toString()}');
-                } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                  var stockDaily = snapshot.data!;
+        FutureBuilder<List<StockTest>>(
+          future: finService.codeToData<StockTest>(code),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error.toString()}');
+            } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+              var stockDaily = snapshot.data!;
 
-                  // 데이터 포인트 생성
-                  List<FlSpot> actualSpots =
-                      List.generate(stockDaily.length, (index) {
-                    var stock = stockDaily[index];
-                    return FlSpot(index.toDouble(), stock.actual.toDouble());
-                  });
+              // 데이터 포인트 생성
+              List<FlSpot> actualSpots =
+                  List.generate(stockDaily.length, (index) {
+                var stock = stockDaily[index];
+                return FlSpot(index.toDouble(), stock.actual.toDouble());
+              });
 
-                  List<FlSpot> predSpots =
-                      List.generate(stockDaily.length, (index) {
-                    var stock = stockDaily[index];
-                    return FlSpot(index.toDouble(), stock.predicted);
-                  });
+              List<FlSpot> predSpots =
+                  List.generate(stockDaily.length, (index) {
+                var stock = stockDaily[index];
+                return FlSpot(index.toDouble(), stock.predicted);
+              });
 
-                  return LineChart(
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                child: SizedBox(
+                  height: 300,
+                  width: 1000,
+                  child: LineChart(
                     LineChartData(
                       gridData: const FlGridData(show: true),
                       titlesData: FlTitlesData(
@@ -79,7 +79,9 @@ class StockLearningChart extends StatelessWidget with FinanceServiceProvider {
                                 title = '';
                               } else {
                                 // 나머지 타이틀
-                                title = stockDaily[value.toInt()].date ??
+                                title = DateFormat('yy-MM-dd').format(
+                                        DateTime.parse(
+                                            stockDaily[value.toInt()].date)) ??
                                     ''; // 일반 타이틀 텍스트
                               }
                               return Text(
@@ -103,7 +105,7 @@ class StockLearningChart extends StatelessWidget with FinanceServiceProvider {
                                 title = '';
                               } else {
                                 title =
-                                    '${((value / 10).round() * 10).toComma()}원';
+                                    '￦${((value / 10).round() * 10).toComma()}';
                               }
                               return Text(
                                 title,
@@ -148,7 +150,7 @@ class StockLearningChart extends StatelessWidget with FinanceServiceProvider {
                               }
                               // 실제 데이터 스팟인 경우 툴팁 표시
                               final tooltipText =
-                                  '${spotData.date}\n실제가: ${spotData.actual.toComma()}원\n예측가: ${spotData.predicted.round().toComma()}원';
+                                  '${spotData.date}\n실제가: ￦${spotData.actual.toComma()}\n예측가: ￦${spotData.predicted.round().toComma()}';
 
                               return LineTooltipItem(
                                 tooltipText,
@@ -178,13 +180,26 @@ class StockLearningChart extends StatelessWidget with FinanceServiceProvider {
                         ),
                       ],
                     ),
-                  );
-                } else {
-                  return const Text('No data available');
-                }
-              },
-            ),
-          ),
+                  ),
+                ),
+              );
+            } else {
+              return SizedBox(
+                height: 250,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.error_outline_outlined,
+                      size: 50,
+                    ),
+                    height20,
+                    '학습 데이터가 없습니다.'.text.size(15).make(),
+                  ],
+                ),
+              );
+            }
+          },
         ),
       ],
     );

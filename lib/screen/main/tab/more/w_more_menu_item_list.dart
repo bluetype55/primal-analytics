@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
+import 'package:primal_analytics/screen/main/tab/more/developer_info/s_developer_info.dart';
+import 'package:primal_analytics/screen/main/tab/more/opensource/s_opensource.dart';
 import 'package:primal_analytics/screen/main/tab/more/payment/s_payment_screen.dart';
 import 'package:primal_analytics/screen/main/tab/more/settings/s_setting_screen.dart';
 
-import '../../../opensource/s_opensource.dart';
 import '../../w_menu_drawer.dart';
 
 class MoreMenuItemList extends StatelessWidget {
@@ -32,6 +33,13 @@ class MoreMenuItemList extends StatelessWidget {
           'setting'.tr(),
           onTap: () async {
             Nav.push(const SettingScreen());
+          },
+        ),
+        const Line(),
+        MenuItemWidget(
+          '개발자 정보',
+          onTap: () async {
+            Nav.push(const DeveloperInfoScreen());
           },
         ),
         const Line(),

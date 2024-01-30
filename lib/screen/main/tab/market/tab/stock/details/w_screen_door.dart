@@ -12,7 +12,7 @@ class ScreenDoor extends StatelessWidget {
           context.showErrorSnackbar('내가 찜한 종목만 AI 예측가를 확인할 수 있습니다.');
         },
         child: Container(
-          height: 100,
+          height: 200,
           width: 380,
           decoration: BoxDecoration(
             color: context.appColors.roundedLayoutBackgorund,
@@ -26,12 +26,19 @@ class ScreenDoor extends StatelessWidget {
               ),
             ],
           ),
-          child: Icon(
-            Icons.lock_outline,
-            size: 40,
-            color: Colors.grey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.lock_outline,
+                size: 50,
+                color: Colors.grey,
+              ),
+              height20,
+              '우측 상단 버튼을 눌러서 AI 예측 주가를 확인하세요.'.text.make().pSymmetric(h: 35),
+            ],
           ),
-        ),
+        ).pSymmetric(v: 30),
       ),
     );
   }

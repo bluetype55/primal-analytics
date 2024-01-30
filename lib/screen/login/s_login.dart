@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/dialog/d_message.dart';
 import 'package:primal_analytics/screen/login/auth_controller.dart';
 
 import '../../app.dart';
@@ -24,7 +23,6 @@ class LoginScreen extends StatelessWidget {
           onPressed: () async {
             final userCredit = await authController.signInWithGoogle();
             if (userCredit == null) {
-              MessageDialog('로그인 실패').show();
               return;
             }
             if (context.mounted) AppState().restartApp();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
-import 'package:primal_analytics/screen/opensource/vo_package.dart';
+import 'package:primal_analytics/screen/main/tab/more/opensource/vo_package.dart';
 
 class OpensourceItem extends StatelessWidget {
   final Package package;

@@ -26,10 +26,9 @@ class IdstBox extends StatelessWidget with FinanceServiceProvider {
         TableCell(
           child: value.text
               .overflow(TextOverflow.clip)
-              .bold
               .make()
               .pSymmetric(v: 10)
-              .marginOnly(right: 50),
+              .marginOnly(right: 60),
         ),
       ],
     );
@@ -85,7 +84,17 @@ class IdstBox extends StatelessWidget with FinanceServiceProvider {
             ],
           ).pSymmetric(h: 20);
         } else {
-          return const Text('No data available');
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.error_outline_outlined,
+                size: 50,
+              ),
+              height20,
+              '데이터가 없습니다.'.text.size(15).make(),
+            ],
+          );
         }
       },
     );

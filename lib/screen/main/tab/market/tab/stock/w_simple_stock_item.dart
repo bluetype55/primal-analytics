@@ -21,7 +21,7 @@ class SimpleStockItem extends StatelessWidget {
               stock.changesRatioString.text.bold
                   .color(stock.getPriceColor(context))
                   .make(),
-              '${int.parse(stock.close).toComma()}원'
+              '￦${int.parse(stock.close).toComma()}'
                   .text
                   .bold
                   .color(context.appColors.lessImportant)
