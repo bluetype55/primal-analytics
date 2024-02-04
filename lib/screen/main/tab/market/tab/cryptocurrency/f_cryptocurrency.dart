@@ -4,12 +4,14 @@ import 'package:primal_analytics/screen/main/tab/market/tab/currencies/w_prepair
 import '../../../../../../common/common.dart';
 import '../../../../../../data/stock_api/finance_service.dart';
 
-class CurrenciesFragment extends StatelessWidget with FinanceServiceProvider {
-  CurrenciesFragment({super.key});
+class CryptocurrencyFragment extends StatelessWidget
+    with FinanceServiceProvider {
+  CryptocurrencyFragment({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Height(200),
         PrepareBox(),

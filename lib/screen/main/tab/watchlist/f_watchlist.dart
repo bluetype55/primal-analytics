@@ -12,8 +12,8 @@ class WatchlistFragment extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         scrolledUnderElevation: 0,
-        title: const Text(
-          '관심목록',
+        title: Text(
+          'watchlist'.tr(),
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),

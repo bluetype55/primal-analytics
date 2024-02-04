@@ -1,12 +1,11 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/stock/w_simple_stock_item.dart';
 
 import '../tab/stock/details/s_stock_details.dart';
 
-class SearchAutoCompleteList extends StatelessWidget
-    with SearchStockDataProvider {
+class SearchAutoCompleteList extends StatelessWidget with SearchProvider {
   final TextEditingController controller;
   SearchAutoCompleteList(this.controller, {super.key});
 
@@ -14,7 +13,7 @@ class SearchAutoCompleteList extends StatelessWidget
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        final stock = searchData.autoCompleteStocksList[index];
+        final stock = searchDataController.autoCompleteStocksList[index];
         return OpenContainer(
           transitionType: ContainerTransitionType.fade, // 애니메이션 효과 설정
           closedColor: Colors.transparent, // 닫힌 상태의 배경색
@@ -26,7 +25,7 @@ class SearchAutoCompleteList extends StatelessWidget
           },
         );
       },
-      itemCount: searchData.autoCompleteStocksList.length,
+      itemCount: searchDataController.autoCompleteStocksList.length,
     );
   }
 }

@@ -9,6 +9,10 @@
   "SignOutMessage": "정말로 로그아웃 하시겠습니까?",
   "confirm_message" : "정말로 확인하시겠습니까?",
   "setting" : "설정",
+  "language" : "언어",
+  "subscription" : "구독",
+  "developerInfo" : "개발자 정보",
+  "withdrawal" : "회원탈퇴",
   "cancel": "취소",
   "confirm" : "확인",
   "clear" : "전체 삭제",
@@ -17,9 +21,14 @@
   "news": "뉴스",
   "analyze": "분석",
   "watchlist": "관심목록",
+  "mostWatchedList": "자주 찾는 종목",
+  "favorites": "찜한 종목",
   "more": "더보기",
   "most_actives": "거래량",
   "gainers": "상승폭",
   "losers": "하락폭",
-  "market_cap": "시가총액"
+  "market_cap": "시가총액",
+  "stock": "주식",
+  "currencies": "외환",
+  "crypto": "암호화폐"
 }

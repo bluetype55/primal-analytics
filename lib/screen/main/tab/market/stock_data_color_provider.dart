@@ -6,7 +6,7 @@ abstract mixin class StockDataColorProvider {
   double get changesRatio;
 
   String get changesString =>
-      "￦${changes.abs()} ($symbol${changesRatio.abs()}%)";
+      "${changes.abs().toComma()} ($symbol${changesRatio.abs()}%)";
   String get changesRatioString => "$symbol${changesRatio.abs()}%";
 
   bool get isPlus => changes > 0;

@@ -51,7 +51,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                           ).show();
                         }),
                         const Line(),
-                        MenuItemWidget("회원탈퇴",
+                        MenuItemWidget("withdrawal".tr(),
                             onTap: () =>
                                 authController.showConfirmDialog(context)),
                         const Line(),

@@ -14,14 +14,14 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: '설정'.text.make(),
+        title: 'setting'.tr().text.make(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            '언어설정'.text.size(20).make().pOnly(left: 20),
+            'language'.tr().text.size(20).make().pOnly(left: 20),
             LanguageOption(),
           ],
         ),

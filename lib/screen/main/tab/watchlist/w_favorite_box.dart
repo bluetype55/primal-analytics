@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
@@ -22,7 +22,7 @@ class FavoriteBox extends StatelessWidget with FavoriteProvider {
                 width10,
                 const Icon(Icons.favorite, color: Colors.red),
                 width10,
-                '내가 찜한 종목'.text.size(20).bold.make(),
+                'favorites'.tr().text.size(20).bold.make(),
                 emptyExpanded,
               ],
             ),

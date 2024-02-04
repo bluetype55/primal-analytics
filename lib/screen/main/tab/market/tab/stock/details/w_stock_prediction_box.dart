@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/data/stock_api/finance_service.dart';
 
+import '../../../../../../../common/widget/w_no_data_box.dart';
 import '../../../../../../../data/stock_api/vo_stock_prediction.dart';
 
 class StockPredictionBox extends StatelessWidget with FinanceServiceProvider {
@@ -111,21 +112,8 @@ class StockPredictionBox extends StatelessWidget with FinanceServiceProvider {
             ],
           );
         } else {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.error_outline_outlined,
-                    size: 30,
-                  ),
-                  height20,
-                  '학습 데이터가 없습니다.'.text.size(10).make(),
-                ],
-              ),
-            ],
+          return NoDataBox(
+            message: '학습데이터가 없습니다.',
           );
         }
       },

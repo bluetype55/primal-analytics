@@ -43,7 +43,7 @@ class MainScreenState extends State<MainScreen>
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) async {
     FinanceService stockService = Get.find<FinanceService>();
-    ever(stockService.isKrxStockLoading, (isLoading) {
+    ever(stockService.isAllStockDataLoading, (isLoading) {
       if (!isLoading) {
         // 로딩이 끝났으면 스플래시 화면 제거
         FlutterNativeSplash.remove();

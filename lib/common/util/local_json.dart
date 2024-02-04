@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:primal_analytics/data/news_api/vo_news_data.dart';
 import 'package:primal_analytics/data/stock_api/vo_simple_stock.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_daily.dart';
 import 'package:primal_analytics/data/stock_api/vo_stock_data.dart';
@@ -26,10 +27,25 @@ class LocalJson {
       http.Response response) async {
     if (response.statusCode == 200) {
       String resKorean = utf8.decode(response.bodyBytes);
-      List<dynamic> jsonResponse = json.decode(resKorean);
-      return jsonResponse.map((json) => _tryConverting<T>(json)).toList();
+      var jsonData = json.decode(resKorean);
+
+      // jsonData가 Map인지 확인
+      if (jsonData is Map<String, dynamic>) {
+        if (jsonData.containsKey('articles') &&
+            jsonData['articles'] is List<dynamic>) {
+          List<dynamic> jsonResponse = jsonData['articles'];
+          return jsonResponse.map((json) => _tryConverting<T>(json)).toList();
+        } else {
+          // 'articles' 키가 없는 경우의 처리 (예: 빈 리스트 반환)
+          return <T>[];
+        }
+      } else {
+        // jsonData가 List인 경우 또는 다른 타입인 경우의 처리
+        List<dynamic> jsonResponse = jsonData;
+        return jsonResponse.map((json) => _tryConverting<T>(json)).toList();
+      }
     } else {
-      throw Exception("Failed to load stock data");
+      throw Exception("Failed to load data");
     }
   }
 
@@ -76,6 +92,8 @@ T _tryConverting<T>(dynamic json) {
       return StockPrediction.fromJson(json) as T;
     case StockFinance:
       return StockFinance.fromJson(json) as T;
+    case NewsData:
+      return NewsData.fromJson(json) as T;
     default:
       throw Exception("Please check _tryConverting method");
   }

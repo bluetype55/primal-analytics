@@ -23,7 +23,7 @@ class MoreMenuItemList extends StatelessWidget {
         ),
         const Line(),
         MenuItemWidget(
-          '결제',
+          'subscription'.tr(),
           onTap: () async {
             Nav.push(PaymentScreen());
           },
@@ -37,7 +37,7 @@ class MoreMenuItemList extends StatelessWidget {
         ),
         const Line(),
         MenuItemWidget(
-          '개발자 정보',
+          'developerInfo'.tr(),
           onTap: () async {
             Nav.push(const DeveloperInfoScreen());
           },

@@ -9,6 +9,10 @@
   "SignOutMessage": "Are you sure you want to sign out?",
   "confirm_message" : "Are you sure you want to confirm?",
   "setting" : "Settings",
+  "language" : "Language",
+  "subscription" : "Subscription",
+  "developerInfo" : "Developer Information",
+  "withdrawal" : "Membership Withdrawal",
   "cancel": "Cancel",
   "confirm" : "Confirm",
   "clear" : "Clear",
@@ -17,9 +21,14 @@
   "news": "News",
   "analyze": "Analyze",
   "watchlist": "Watchlist",
+  "mostWatchedList": "Most Watched List",
+  "favorites": "Favorites",
   "more": "More",
   "most_actives": "Most Actives",
   "gainers": "Gainers",
   "losers": "Losers",
-  "market_cap": "Market Cap"
+  "market_cap": "Market Cap",
+  "stock": "Stock",
+  "currencies": "Currencies",
+  "crypto": "Cryptocurrency"
 }

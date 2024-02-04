@@ -12,10 +12,10 @@ import 'package:primal_analytics/screen/main/tab/market/tab/stock/details/w_stoc
 import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
 import '../../../../../../../data/stock_api/finance_service.dart';
-import '../../../search/search_stock_data_provider.dart';
+import '../../../search/search_provider.dart';
 
 class StockDetailsScreen extends StatelessWidget
-    with FinanceServiceProvider, SearchStockDataProvider, FavoriteProvider {
+    with FinanceServiceProvider, SearchProvider, FavoriteProvider {
   final String code;
   StockDetailsScreen(
     this.code, {
@@ -29,8 +29,8 @@ class StockDetailsScreen extends StatelessWidget
     return PopScope(
       canPop: true,
       onPopInvoked: (bool didPop) async {
-        searchData.addHistory(stock);
-        searchData.saveStockView(stock);
+        searchDataController.addHistory(stock);
+        searchDataController.saveStockView(stock);
         favoriteController.addMyWatchlist(code);
       },
       child: Scaffold(

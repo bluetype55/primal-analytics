@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/s_search_stock.dart';
+import 'package:primal_analytics/screen/main/tab/market/tab/cryptocurrency/f_cryptocurrency.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/currencies/f_currencies.dart';
 import 'package:primal_analytics/screen/main/tab/market/tab/stock/f_stock.dart';
 
@@ -13,7 +14,7 @@ class MarketFragment extends StatefulWidget {
 
 class _MarketFragmentState extends State<MarketFragment>
     with SingleTickerProviderStateMixin {
-  late final tabController = TabController(length: 2, vsync: this);
+  late final tabController = TabController(length: 3, vsync: this);
   int currentIndex = 0;
 
   @override
@@ -48,8 +49,10 @@ class _MarketFragmentState extends State<MarketFragment>
             children: [
               if (currentIndex == 0)
                 const StockFragment()
-              else
+              else if (currentIndex == 1)
                 CurrenciesFragment()
+              else
+                CryptocurrencyFragment()
             ],
           ),
         ),
@@ -80,8 +83,9 @@ class _MarketFragmentState extends State<MarketFragment>
               indicatorSize: TabBarIndicatorSize.label,
               controller: tabController,
               tabs: [
-                "주식".text.make(),
-                '외환'.text.make(),
+                "stock".tr().text.make(),
+                'currencies'.tr().text.make(),
+                'crypto'.tr().text.make(),
               ],
             ),
           ],

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/theme/custom_theme_app.dart';
 import 'package:primal_analytics/screen/main/s_main.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_provider.dart';
 import 'package:primal_analytics/screen/main/tab/more/payment/payment_provider.dart';
 import 'package:primal_analytics/screen/main/tab/watchlist/favorite_provider.dart';
 
@@ -42,8 +43,11 @@ class AppState extends State<App> with Nav, WidgetsBindingObserver {
     final paymentController = Get.put(PaymentController());
     final FavoriteController favoriteController =
         Get.find<FavoriteController>();
+    final SearchDataController searchDataController =
+        Get.find<SearchDataController>();
     paymentController.getCurrentSubscriptIndex();
     favoriteController.loadInitialData();
+    searchDataController.getHistory();
     navigatorKey.currentState?.popUntil((route) => route.isFirst);
     navigatorKey.currentState?.pushReplacement(
         MaterialPageRoute(builder: (context) => const MainScreen()));

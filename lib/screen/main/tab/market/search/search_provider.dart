@@ -9,11 +9,11 @@ import 'package:primal_analytics/data/stock_api/vo_stock_industry_info.dart';
 import '../../../../../data/stock_api/finance_service.dart';
 import '../../../../../data/stock_api/vo_stock_data.dart';
 
-abstract mixin class SearchStockDataProvider {
-  final searchData = Get.find<SearchStockData>();
+abstract mixin class SearchProvider {
+  final searchDataController = Get.find<SearchDataController>();
 }
 
-class SearchStockData extends GetxController with FinanceServiceProvider {
+class SearchDataController extends GetxController with FinanceServiceProvider {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   List<StockData> stocks = [];
   RxList<StockData> autoCompleteStocksList = <StockData>[].obs;

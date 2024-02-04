@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/screen/dialog/d_confirm.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_provider.dart';
 
 import '../tab/stock/details/s_stock_details.dart';
 
@@ -14,7 +14,7 @@ class SearchHistoryStockList extends StatefulWidget {
 }
 
 class _SearchHistoryStockListState extends State<SearchHistoryStockList>
-    with SearchStockDataProvider {
+    with SearchProvider {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +28,7 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
               onTap: () {
                 ConfirmDialog(
                   message: '조회 목록을 삭제 하시겠습니까?',
-                  function: searchData.removeAllHistory,
+                  function: searchDataController.removeAllHistory,
                   confirmButtonText: 'clear'.tr(),
                   confirmButtonColor: context.appColors.allertText,
                 ).show();
@@ -50,11 +50,12 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
             () => ListView.builder(
               padding: const EdgeInsets.only(top: 5),
               scrollDirection: Axis.horizontal,
-              itemCount: searchData.searchHistoryList.length,
+              itemCount: searchDataController.searchHistoryList.length,
               itemBuilder: (context, index) {
                 final reversedIndex =
-                    searchData.searchHistoryList.length - 1 - index;
-                final stock = searchData.searchHistoryList[reversedIndex];
+                    searchDataController.searchHistoryList.length - 1 - index;
+                final stock =
+                    searchDataController.searchHistoryList[reversedIndex];
                 return Column(
                   children: [
                     Container(
@@ -70,7 +71,7 @@ class _SearchHistoryStockListState extends State<SearchHistoryStockList>
                           width5,
                           Tap(
                               onTap: () {
-                                searchData.removeHistory(stock);
+                                searchDataController.removeHistory(stock);
                               },
                               child: const Icon(Icons.close, size: 12)),
                         ],

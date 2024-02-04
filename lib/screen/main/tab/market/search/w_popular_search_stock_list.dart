@@ -2,14 +2,13 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:primal_analytics/common/common.dart';
 import 'package:primal_analytics/common/dart/extension/datetime_extension.dart';
-import 'package:primal_analytics/screen/main/tab/market/search/search_stock_data_provider.dart';
+import 'package:primal_analytics/screen/main/tab/market/search/search_provider.dart';
 import 'package:primal_analytics/screen/main/tab/market/search/w_popular_search_stock_item.dart';
 
 import '../../../../../data/stock_api/vo_stock_data.dart';
 import '../tab/stock/details/s_stock_details.dart';
 
-class PopularSearchStockList extends StatelessWidget
-    with SearchStockDataProvider {
+class PopularSearchStockList extends StatelessWidget with SearchProvider {
   PopularSearchStockList(this.stockList, {super.key});
   final List<StockData> stockList;
 
